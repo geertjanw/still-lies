@@ -71,8 +71,12 @@ Create the evals now so they're ready when traffic arrives. Dash0 Evals don't ba
 
 Go to Dash0 → AI Observability → Evals. You'll set up three evals: two from Dash0's built-in templates and one you'll create.
 
-![Dash0 Evals page](docs/screenshots/dash0-eval-create-form.png)
-*Dash0 → AI Observability → Evals, Templates tab*
+First, click the **+ Create new** dropdown to choose between starting from a template or creating manually:
+
+![Evals Create dropdown](docs/screenshots/dash0-eval-templates-dropdown.png)
+*Click **+ Create new** then choose **From template***
+
+Then find the built-in templates for Hallucination and Answer relevance:
 
 ![Built-in eval templates](docs/screenshots/dash0-evals-folder.png)
 *Find Hallucination under Grounding / RAG, and Answer relevance under Response quality*
