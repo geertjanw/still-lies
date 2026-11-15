@@ -63,18 +63,22 @@ This builds `agent/target/support-agent.jar` and `cli/target/evals-gate.jar`. Ru
 
 ## The loop
 
-### 1. Create the evals in Dash0
+### 1. Create the three evals in Dash0
 
 Do this before you send any traffic: Dash0 Evals don't backfill, so spans that arrive before an eval exists are never judged.
 
-```bash
-evals-gate dash0-evals
-```
+In Dash0, go to AI → Evals and click **+ New eval**. Create three evals (refer to `dash0/evals/` in the repo for the full logic):
 
-**To capture**: After the command succeeds, open Dash0 → AI → Evals. You should see three enabled evals in the `evals-gate` folder (groundedness, topic, answered-the-question). Take a screenshot of the evals list.
+1. **groundedness** — Scores 0–1 how fully every factual claim in the answer is supported by the retrieved policy. Threshold 0.7.
+2. **topic** — Categorizes the customer question (billing, shipping, account, or other).
+3. **answered-the-question** — Boolean: does the answer address what the customer asked.
+
+All three should match on `service.name = support-agent` and `gen_ai.operation.name is_set`.
+
+**To screenshot**: After creating all three, open Dash0 → AI → Evals. You should see three enabled evals. Take a screenshot of the evals list.
 
 ![Dash0 Evals folder](docs/screenshots/dash0-evals-folder.png)
-*The three evals in the evals-gate folder, ready to judge incoming traffic*
+*The three evals created in the Dash0 UI, ready to judge incoming traffic*
 
 ### 2. Reproduce the incident
 
