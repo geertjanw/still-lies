@@ -83,10 +83,7 @@ All three should match on `service.name = support-agent` and `gen_ai.operation.n
 *Creating an eval in the Dash0 UI*
 
 ![Dash0 Evals folder](docs/screenshots/dash0-evals-folder.png)
-*The three evals created in the Dash0 UI, ready to judge incoming traffic*
-
-![Dash0 Evals folder](docs/screenshots/dash0-evals-folder.png)
-*The three evals created in the Dash0 UI, ready to judge incoming traffic*
+*The three evals in the Dash0 UI, ready to judge incoming traffic*
 
 ### 2. Reproduce the incident
 
