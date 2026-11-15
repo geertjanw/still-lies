@@ -65,9 +65,9 @@ This builds `agent/target/support-agent.jar` and `cli/target/evals-gate.jar`. Ru
 
 This is the production-to-CI loop: detect failures in production with Dash0, export them into a golden dataset, and gate new code with harness-evals to prevent regressions. Follow these steps in order.
 
-### 1. Set up three evals in Dash0
+### 1. Prepare the evals in Dash0 (before sending traffic)
 
-Do this before you send any traffic: Dash0 Evals don't backfill, so spans that arrive before an eval exists are never judged.
+Create the evals now so they're ready when traffic arrives. Dash0 Evals don't backfill, so they must exist before spans arrive to judge them.
 
 Go to Dash0 → AI Observability → Evals. You'll set up three evals: two from Dash0's built-in templates and one you'll create.
 
@@ -77,21 +77,15 @@ Go to Dash0 → AI Observability → Evals. You'll set up three evals: two from 
 ![Built-in eval templates](docs/screenshots/dash0-evals-folder.png)
 *Find Hallucination under Grounding / RAG, and Answer relevance under Response quality*
 
-**Step 1: Enable Hallucination (built-in)**
+**Create Hallucination (built-in)**
 
-Find **Hallucination** in the Grounding / RAG section. This eval checks whether the agent's answer stays true to the policy it retrieved. Click to enable it. No configuration needed.
+Find **Hallucination** in the Grounding / RAG section. This will check whether the agent's answer stays true to the policy it retrieved. Click to enable it. No configuration needed.
 
-![Hallucination eval enabled](docs/screenshots/dash0-hallucination-enabled.png)
-*Hallucination is now enabled. It will judge incoming traffic.*
+**Create Answer relevance (built-in)**
 
-**Step 2: Enable Answer relevance (built-in)**
+Find **Answer relevance** in the Response quality section. This will check whether the agent actually answered the customer's question. Click to enable it. No configuration needed.
 
-Find **Answer relevance** in the Response quality section. This eval checks whether the agent actually answered the customer's question. Click to enable it. No configuration needed.
-
-![Answer relevance eval enabled](docs/screenshots/dash0-answer-relevance-enabled.png)
-*Answer relevance is now enabled. It will judge incoming traffic.*
-
-**Step 3: Create Topic (custom)**
+**Create Topic (custom)**
 
 Click **+ Create manually** and configure a new eval:
 - Name: **Topic**
@@ -104,12 +98,9 @@ Click **+ Create manually** and configure a new eval:
   - `service.name` `is` `support-agent`
   - `gen_ai.operation.name` `is_set` (leave value blank)
 
-![Topic eval form](docs/screenshots/dash0-topic-form.png)
-*Creating the Topic classifier. Click Save when done.*
+Click Save. All three evals are now set up and waiting for traffic.
 
-All three evals are now set up and ready. When you send traffic in the next step, these evals will judge each request.
-
-### 2. Reproduce the incident
+### 2. Send traffic so the evals judge it
 
 In terminal 1, start the agent with the bug, sending traces to Dash0:
 
@@ -123,7 +114,7 @@ In terminal 2, send 51 requests:
 evals-gate traffic
 ```
 
-After a few minutes, open a `chat` span from `support-agent` in Dash0 and look at its **Evals** tab. Groundedness fails on the refund questions, while every other check is green.
+After a few minutes, the evals will have judged all the requests. Open a `chat` span from `support-agent` in Dash0 and look at its **Evals** tab. Hallucination fails on the refund questions, while every other check is green.
 
 **To capture (Evals on a single span)**:
 1. In Dash0, navigate to Traces
