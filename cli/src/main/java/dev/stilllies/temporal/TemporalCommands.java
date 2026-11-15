@@ -27,7 +27,7 @@ import java.time.LocalDate;
  */
 public final class TemporalCommands {
 
-  static final String TASK_QUEUE = "still-lies";
+  static final String TASK_QUEUE = "evals-gate";
 
   private TemporalCommands() {}
 

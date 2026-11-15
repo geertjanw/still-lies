@@ -14,7 +14,7 @@
   <groupId>dev.stilllies</groupId>
   <artifactId>support-agent</artifactId>
   <version>1.0.0</version>
-  <name>still-lies support agent</name>
+  <name>evals-gate support agent</name>
   <description>A billing support agent that answers from policy documents (Spring AI).</description>
 
   <properties>

@@ -1,7 +1,7 @@
 package dev.stilllies.temporal;
 
 /**
- * One quality incident, as started by the Dash0 check rule (or by hand with `still-lies.jar temporal start`).
+ * One quality incident, as started by the Dash0 check rule (or by hand with `evals-gate temporal start`).
  *
  * @param id             workflow ID, e.g. eval-incident-billing-2026-11-12
  * @param from           how far back to export from Dash0, e.g. now-24h

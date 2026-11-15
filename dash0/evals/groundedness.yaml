@@ -1,10 +1,10 @@
 kind: Dash0GenerativeAiEvaluation
 metadata:
-  name: still-lies-groundedness
+  name: evals-gate-groundedness
   labels:
-    dash0.com/origin: dash0-cli_still-lies-groundedness
+    dash0.com/origin: dash0-cli_evals-gate-groundedness
   annotations:
-    dash0.com/folder-path: /still-lies
+    dash0.com/folder-path: /evals-gate
 spec:
   display:
     name: Groundedness

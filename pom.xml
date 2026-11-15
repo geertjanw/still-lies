@@ -3,7 +3,7 @@
   Builds both jars from the repository root:
     mvn -q package -DskipTests
   agent/target/support-agent.jar   the Spring Boot support agent
-  cli/target/still-lies.jar        every other step: export, DuckDB, gate, Temporal, rehearsal
+  cli/target/evals-gate.jar        every other step: export, DuckDB, gate, Temporal, rehearsal
 -->
 <project xmlns="http://maven.apache.org/POM/4.0.0"
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
@@ -11,11 +11,11 @@
   <modelVersion>4.0.0</modelVersion>
 
   <groupId>dev.stilllies</groupId>
-  <artifactId>still-lies</artifactId>
+  <artifactId>evals-gate</artifactId>
   <version>1.0.0</version>
   <packaging>pom</packaging>
-  <name>still-lies</name>
-  <description>Sample for the talk "When Your LLM Passes Every Check And Still Lies".</description>
+  <name>evals-gate</name>
+  <description>Sample for the talk "When Your LLM Passes Every Check And Still Lies". CLI for managing LLM evals and gating deployments.</description>
 
   <modules>
     <module>agent</module>

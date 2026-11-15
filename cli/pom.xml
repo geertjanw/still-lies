@@ -5,10 +5,10 @@
   <modelVersion>4.0.0</modelVersion>
 
   <groupId>dev.stilllies</groupId>
-  <artifactId>still-lies-cli</artifactId>
+  <artifactId>evals-gate-cli</artifactId>
   <version>1.0.0</version>
-  <name>still-lies command line</name>
-  <description>Every step of the demo as one jar: java -jar cli/target/still-lies.jar help</description>
+  <name>evals-gate command line</name>
+  <description>Every step of the demo as one jar: java -jar cli/target/evals-gate.jar help</description>
 
   <properties>
     <maven.compiler.release>21</maven.compiler.release>
@@ -46,7 +46,7 @@
   </dependencies>
 
   <build>
-    <finalName>still-lies</finalName>
+    <finalName>evals-gate</finalName>
     <plugins>
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>

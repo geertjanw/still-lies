@@ -1,18 +1,24 @@
-# still-lies
+# Deployment Gate for LLM Eval Quality
 
 The sample for the talk **When Your LLM Passes Every Check And Still Lies**.
 
 A support agent retrieves the right refund policy (14 days) and then tells customers they have 30 days.
 Every conventional check is green: HTTP 200, low latency, the tool was called, the question was answered.
+
 This repo shows how to:
 
 1. **Detect** it in production with Dash0 Evals (LLM-as-judge on OpenTelemetry GenAI spans).
-2. **Bridge** the failures into a regression suite with DuckDB SQL.
-3. **Gate** the next deploy in CI with the open-source [harness-evals](https://github.com/harness/harness-evals).
+2. **Export** failures into a regression test suite with DuckDB SQL.
+3. **Gate** the next deploy in CI by scoring against that suite with [harness-evals](https://github.com/harness/harness-evals).
 4. **Verify** the fix in production, and **automate** the loop with Temporal.
 
+## Documentation
+
+- **[Step-by-step guide](docs/guide.md)** — Build the sample from an empty folder, step by step, with all code and explanations.
+- **[Slide deck](docs/When%20Your%20LLM%20Passes%20Every%20Check%20And%20Still%20Lies.pptx)** — The talk presentation.
+- **[Talk recording](docs/When%20Your%20LLM%20Passes%20Every%20Check%20And%20Still%20Lies.pdf)** — Notes and visuals as a PDF.
+
 Everything is Java except harness-evals, which is a Python tool that the CLI runs with `uvx`.
-There is no Python code and no Makefile in the repository.
 
 ## What you need
 
@@ -26,6 +32,20 @@ There is no Python code and no Makefile in the repository.
 
 The OpenAI key needs an account with at least one credit purchase. Free-tier rate limits are far too low for a gate run; see [Troubleshooting](#openai).
 
+## Why Dash0 Evals and harness-evals together
+
+**Dash0 Evals** (production):
+- Judge every request in production as it arrives, catching real-world regressions
+- Can't gate a deploy: you only see what users actually send, not what breaks before it ships
+- Requires observability infrastructure (OpenTelemetry pipeline)
+
+**harness-evals** (CI):
+- Gate a deployment by testing against a controlled golden dataset of known edge cases
+- Catches regressions *before* they reach users
+- Doesn't require production traffic; runs on committed test data
+
+**Together** Dash0 catches new failure modes in production and feeds them back into the dataset, while harness-evals prevents known failures from being deployed again. Dash0 finds the bugs, harness-evals keeps them out.
+
 ## Build and configure
 
 Copy `.env.example` to `.env` and fill in your keys. Then build both jars and check your setup:
@@ -33,11 +53,11 @@ Copy `.env.example` to `.env` and fill in your keys. Then build both jars and ch
 ```bash
 cp .env.example .env
 mvn -q package -DskipTests
-alias still-lies='java -jar cli/target/still-lies.jar'
-still-lies check
+alias evals-gate='java -jar cli/target/evals-gate.jar'
+evals-gate check
 ```
 
-This builds `agent/target/support-agent.jar` and `cli/target/still-lies.jar`. Run everything from the repository root: the agent and the CLI both read `.env` from there. `still-lies help` lists every command.
+This builds `agent/target/support-agent.jar` and `cli/target/evals-gate.jar`. Run everything from the repository root: the agent and the CLI both read `.env` from there. `evals-gate help` lists every command.
 
 ## The loop
 
@@ -46,7 +66,7 @@ This builds `agent/target/support-agent.jar` and `cli/target/still-lies.jar`. Ru
 Do this before you send any traffic: Dash0 Evals don't backfill, so spans that arrive before an eval exists are never judged.
 
 ```bash
-still-lies dash0-evals
+evals-gate dash0-evals
 ```
 
 ### 2. Reproduce the incident
@@ -60,7 +80,7 @@ java -jar agent/target/support-agent.jar --spring.profiles.active=dash0 --agent.
 In terminal 2, send 51 requests:
 
 ```bash
-still-lies traffic
+evals-gate traffic
 ```
 
 After a few minutes, open a `chat` span from `support-agent` in Dash0 and look at its **Evals** tab. Groundedness fails on the refund questions, while every other check is green.
@@ -68,9 +88,9 @@ After a few minutes, open a `chat` span from `support-agent` in Dash0 and look a
 ### 3. Export and slice with DuckDB
 
 ```bash
-still-lies export
-still-lies report
-still-lies cases
+evals-gate export
+evals-gate report
+evals-gate cases
 ```
 
 `report` shows the groundedness fail rate by topic: billing fails, the rest passes. `cases` writes `data/to_review.csv`. Fill in its `expected` column with the correct answer for each question and save it as `data/reviewed.csv`.
@@ -78,7 +98,7 @@ still-lies cases
 ### 4. Build the golden dataset
 
 ```bash
-still-lies dataset
+evals-gate dataset
 ```
 
 This writes `evals/billing-regressions.jsonl`. Commit it.
@@ -88,14 +108,14 @@ This writes `evals/billing-regressions.jsonl`. Commit it.
 First prove the dataset catches the bug. With the broken agent still running in terminal 1:
 
 ```bash
-still-lies eval
+evals-gate eval
 ```
 
 The billing cases should fail. Then restart terminal 1 without `--agent.variant=broken` (the fixed agent), save the baseline and look for flaky cases:
 
 ```bash
-still-lies eval-baseline
-still-lies flaky
+evals-gate eval-baseline
+evals-gate flaky
 ```
 
 Commit `.evals/baselines/`. `flaky` runs the suite five times and lists cases whose outcome changes between runs.
@@ -105,7 +125,7 @@ Commit `.evals/baselines/`. `flaky` runs the suite five times and lists cases wh
 This is what CI runs. It exits 0 against the fixed agent and 1 against the broken one:
 
 ```bash
-still-lies gate
+evals-gate gate
 ```
 
 ### 7. Verify in production
@@ -113,8 +133,8 @@ still-lies gate
 After the fix is deployed and has had some traffic, compare the billing fail rate before and after the deploy time:
 
 ```bash
-still-lies export --from now-6h
-still-lies verify --deployed-at '2026-11-14 10:00:00+01'
+evals-gate export --from now-6h
+evals-gate verify --deployed-at '2026-11-14 10:00:00+01'
 ```
 
 ## Without Dash0 or OpenAI
@@ -122,16 +142,16 @@ still-lies verify --deployed-at '2026-11-14 10:00:00+01'
 To run the DuckDB half without Dash0, use the bundled exports in `samples/`:
 
 ```bash
-still-lies samples
-still-lies report
-still-lies cases
-still-lies dataset
+evals-gate samples
+evals-gate report
+evals-gate cases
+evals-gate dataset
 ```
 
 To rehearse the gate without OpenAI, start the stand-in model in terminal 1:
 
 ```bash
-still-lies rehearsal-model
+evals-gate rehearsal-model
 ```
 
 Start the broken agent against it in terminal 2:
@@ -143,7 +163,7 @@ java -jar agent/target/support-agent.jar --agent.variant=broken --spring.ai.open
 Run the gate in terminal 3. It exits 1; restart terminal 2 without `--agent.variant=broken` and it exits 0:
 
 ```bash
-still-lies rehearse-gate
+evals-gate rehearse-gate
 ```
 
 ## Temporal
@@ -155,28 +175,28 @@ temporal server start-dev
 ```
 
 ```bash
-still-lies temporal worker
+evals-gate temporal worker
 ```
 
 Then, in terminal 3, start an incident with short waits for a demo, and follow it:
 
 ```bash
-still-lies temporal start --review-reminder PT2M --verify-after PT1M
-still-lies temporal status
+evals-gate temporal start --review-reminder PT2M --verify-after PT1M
+evals-gate temporal status
 ```
 
 After saving `data/reviewed.csv`, signal the review, and later the gate result:
 
 ```bash
-still-lies temporal review
-still-lies temporal gate --passed true --deployed-at '2026-11-14 10:00:00+01'
+evals-gate temporal review
+evals-gate temporal gate --passed true --deployed-at '2026-11-14 10:00:00+01'
 ```
 
 The workflow runs the same steps as the commands above: export, cases, a durable wait for the reviewer, dataset, an optional pull request (`OPEN_PR=true`), a wait for the CI gate, a 24-hour timer, and the before/after comparison. When billing hasn't recovered, it continues as new, up to three attempts. The Temporal Web UI at http://localhost:8233 shows the full history.
 
 ## CI
 
-`.github/workflows/evals.yml` builds both jars, starts the fixed agent and runs `still-lies gate` on every pull request, on every push to `main`, and nightly. It needs one repository secret:
+`.github/workflows/evals.yml` builds both jars, starts the fixed agent and runs `evals-gate gate` on every pull request, on every push to `main`, and nightly. It needs one repository secret:
 
 ```bash
 gh secret set OPENAI_API_KEY --repo geertjanw/still-lies
@@ -221,7 +241,7 @@ For a rerun, add `--attempt 2` to `gh run view`; without it, `--log-failed` can 
 | `sql/` | Every data step, in DuckDB SQL |
 | `evals/` | The harness-evals config and the golden dataset |
 | `.evals/baselines/` | The stored baseline the gate compares against |
-| `cli/` | The `still-lies` command line: steps, DuckDB over JDBC, Temporal, the rehearsal model |
+| `cli/` | The `evals-gate` command line: steps, DuckDB over JDBC, Temporal, the rehearsal model |
 | `.github/workflows/evals.yml` | The CI gate |
 | `samples/` | Exports for running without Dash0 |
 

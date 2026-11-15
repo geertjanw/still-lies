@@ -47,7 +47,7 @@ jobs:
           echo "agent did not start"; cat agent.log; exit 1
 
       - name: Run the eval gate
-        run: java -jar cli/target/still-lies.jar gate
+        run: java -jar cli/target/evals-gate.jar gate
 
       - name: Upload eval results
         if: always()
