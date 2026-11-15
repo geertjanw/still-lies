@@ -114,21 +114,20 @@ Click Save.
 Click **+ Create manually** and configure a new eval:
 
 - **Name:** `Topic`
-- **Output type:** `Categorical`
-- **Options:** `billing` `shipping` `account` `other` (one per line)
+- **Output:** `Categorical`
+- **Options:** `billing`, `shipping`, `account`, `other`
 - **Judge model:** `Light`
 - **System prompt:** `Classify the customer's question by topic. billing = refunds/plans/cancellations. shipping = delivery/costs. account = users/sign-in. other = anything else.`
 - **User prompt:** `Classify this customer question into one topic.`
-
-![Topic eval form: General and Prompts sections](docs/screenshots/dash0-topic-eval-form-top.png)
-*Fill in Name, System prompt, and User prompt at the top*
-
 - **Filters:** Add two filters:
   - `service.name` `is` `support-agent`
   - `gen_ai.operation.name` `is_set` (leave value blank)
 
-![Topic eval form: Match and Judge sections](docs/screenshots/dash0-topic-eval-form-bottom.png)
-*Configure Match filters (Span filters) and Judge model (Light)*
+![Topic eval form: General and Prompts](docs/screenshots/dash0-topic-eval-form-top.png)
+*General section shows Name. Prompts section below shows System prompt and User prompt.*
+
+![Topic eval form: Match and Judge](docs/screenshots/dash0-topic-eval-form-bottom.png)
+*Match section shows Span filters. Judge section shows Model class. Output section (scroll up) shows Output type and Options.*
 
 Click Save. All three evals are now set up and waiting for traffic.
 
