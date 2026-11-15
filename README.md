@@ -72,7 +72,7 @@ Do this before you send any traffic: Dash0 Evals don't backfill, so spans that a
 Go to Dash0 → AI Observability → Evals. You'll set up three evals: two from Dash0's built-in templates and one you'll create.
 
 ![Dash0 Evals page](docs/screenshots/dash0-eval-create-form.png)
-*The Evals Templates tab, showing built-in eval options*
+*Dash0 → AI Observability → Evals, Templates tab*
 
 ![Built-in eval templates](docs/screenshots/dash0-evals-folder.png)
 *Find Hallucination under Grounding / RAG, and Answer relevance under Response quality*
