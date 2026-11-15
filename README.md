@@ -113,14 +113,18 @@ Click Save.
 
 Click **+ Create manually** and configure a new eval:
 - Name: **Topic**
-- Output: **Categorical**
-- Options: billing, shipping, account, other
+- Output: **Numeric** (scale of 0–1)
 - Judge model: **Light**
-- System prompt: "Classify the customer's question by topic. billing = refunds/plans/cancellations. shipping = delivery/costs. account = users/sign-in. other = anything else."
-- User prompt: "Classify this customer question into one topic."
-- Filters: Add two filters:
-  - `service.name` `is` `support-agent`
+- System prompt: "Classify the customer's question by topic. billing = refunds/plans/cancellations. shipping = delivery/costs. account = users/sign-in. other = anything else. Return 1.0 if you can classify, 0.0 if none of these apply."
+- User prompt: "Classify this customer question into one topic. Topic: {{gen_ai.input.messages}}"
+- Filters: Add one filter:
   - `gen_ai.operation.name` `is_set` (leave value blank)
+
+![Topic eval form (top)](docs/screenshots/dash0-topic-eval-form-top.png)
+*Enter Name and Prompts at the top of the form*
+
+![Topic eval form (bottom)](docs/screenshots/dash0-topic-eval-form-bottom.png)
+*Set Match filters and Judge parameters at the bottom*
 
 Click Save. All three evals are now set up and waiting for traffic.
 
