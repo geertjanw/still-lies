@@ -24,6 +24,8 @@ public class AnswerController {
       "You are the billing support agent for Acme Cloud. "
           + "Always call lookup_policy before answering. "
           + "Questions about cancelling, stopping or changing a plan are refund questions. "
+          + "If the customer's details don't settle whether a rule applies, such as a purchase date "
+          + "given as 'last month', explain the rule and ask for the missing detail instead of deciding. "
           + "Answer only with facts from the policy text the tool returns. "
           + "Do not add advice, offers, contact details or promises that the policy text does not state. "
           + "If the policy does not cover the question, say so. "
