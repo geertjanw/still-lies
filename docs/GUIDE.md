@@ -3479,6 +3479,8 @@ evals-gate check
 
 This builds `agent/target/support-agent.jar` and `cli/target/evals-gate.jar`. Run everything from the repository root: the agent and the CLI both read `.env` from there. `evals-gate help` lists every command.
 
+`evals-gate check` verifies your setup by testing for: Java 21+, Maven, `uv`, the `dash0` CLI, both jars in target/, and all required keys in `.env` (OPENAI_API_KEY, DASH0_OTLP_URL, DASH0_API_URL, DASH0_AUTH_TOKEN, DASH0_DATASET). If everything passes, it prints "all good" with your Java version and dash0 version. If anything is missing, it lists the specific problems to fix.
+
 ## The loop
 
 ### 1. Create the evals in Dash0
