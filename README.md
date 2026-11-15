@@ -111,23 +111,34 @@ Click Save.
 
 **Create Topic (custom)**
 
-Click **+ Create manually** and configure a new eval:
-
-- **Name:** `Topic`
-- **Output:** `Categorical`
-- **Options:** `billing`, `shipping`, `account`, `other`
-- **Judge model:** `Light`
-- **System prompt:** `Classify the customer's question by topic. billing = refunds/plans/cancellations. shipping = delivery/costs. account = users/sign-in. other = anything else.`
-- **User prompt:** `Classify this customer question into one topic.`
-- **Filters:** Add two filters:
-  - `service.name` `is` `support-agent`
-  - `gen_ai.operation.name` `is_set` (leave value blank)
+Click **+ Create manually** and configure a new eval following the form order:
 
 ![Topic eval form: General and Prompts](docs/screenshots/dash0-topic-eval-form-top.png)
-*General section shows Name. Prompts section below shows System prompt and User prompt.*
 
-![Topic eval form: Match and Judge](docs/screenshots/dash0-topic-eval-form-bottom.png)
-*Match section shows Span filters. Judge section shows Model class. Output section (scroll up) shows Output type and Options.*
+**General section:**
+- **Name:** `Topic`
+- **Description:** (leave blank)
+
+**Prompts section:**
+- **System prompt:** `Classify the customer's question by topic. billing = refunds/plans/cancellations. shipping = delivery/costs. account = users/sign-in. other = anything else.`
+- **User prompt:** `Classify this customer question into one topic.`
+- **Judge partial prompts:** (toggle off)
+
+![Topic eval form: Match, Judge, and Output](docs/screenshots/dash0-topic-eval-form-bottom.png)
+
+**Match section:**
+- **Trigger:** `Any GenAI operation`
+- **Span filters:** Add two filters:
+  - `service.name` `is` `support-agent`
+  - `gen_ai.operation.name` `is_set` (leave value blank)
+- **Sample rate:** `20` %
+
+**Judge section:**
+- **Model class:** `Light`
+
+**Output section:**
+- **Output type:** `Categorical`
+- **Options:** `billing`, `shipping`, `account`, `other`
 
 Click Save. All three evals are now set up and waiting for traffic.
 
