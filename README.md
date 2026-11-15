@@ -82,14 +82,14 @@ Go to Dash0 → AI Observability → Evals. You'll set up three evals: two from 
 Find **Hallucination** in the Grounding / RAG section. This eval checks whether the agent's answer stays true to the policy it retrieved. Click to enable it. No configuration needed.
 
 ![Hallucination eval enabled](docs/screenshots/dash0-hallucination-enabled.png)
-*Hallucination added to your active evals*
+*Hallucination is now enabled. It will judge incoming traffic.*
 
 **Step 2: Enable Answer relevance (built-in)**
 
 Find **Answer relevance** in the Response quality section. This eval checks whether the agent actually answered the customer's question. Click to enable it. No configuration needed.
 
 ![Answer relevance eval enabled](docs/screenshots/dash0-answer-relevance-enabled.png)
-*Answer relevance added to your active evals*
+*Answer relevance is now enabled. It will judge incoming traffic.*
 
 **Step 3: Create Topic (custom)**
 
@@ -105,9 +105,9 @@ Click **+ Create manually** and configure a new eval:
   - `gen_ai.operation.name` `is_set` (leave value blank)
 
 ![Topic eval form](docs/screenshots/dash0-topic-form.png)
-*Creating the Topic classifier*
+*Creating the Topic classifier. Click Save when done.*
 
-After all three are enabled or created, they're ready to judge incoming traffic.
+All three evals are now set up and ready. When you send traffic in the next step, these evals will judge each request.
 
 ### 2. Reproduce the incident
 
