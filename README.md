@@ -80,9 +80,6 @@ All three should match on `service.name = support-agent` and `gen_ai.operation.n
 **Create each eval:**
 
 1. Go to Dash0 → AI Observability → Evals and click **+ New eval**
-   
-   ![Dash0 Evals page](docs/screenshots/dash0-eval-create-form.png)
-   *Click + New eval to start creating*
 
 2. **Groundedness eval**
    - Name: **Groundedness**
@@ -108,10 +105,7 @@ All three should match on `service.name = support-agent` and `gen_ai.operation.n
    - User prompt: Does the agent answer directly address the customer's question?
    - Filters: Same as above
 
-After all three are created, they appear in the Evals list.
-
-![Dash0 eval templates (reference)](docs/screenshots/dash0-evals-folder.png)
-*Dash0 shows built-in templates for reference; your three custom evals are now ready to judge traffic*
+After all three are created and enabled, they're ready to judge incoming traffic.
 
 ### 2. Reproduce the incident
 
