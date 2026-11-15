@@ -1869,7 +1869,10 @@ This is the production monitoring half. Dash0 will judge every request in real-t
 
 Create the evals **before** you send traffic. Dash0 Evals only judge spans that arrive *after* the eval is created. They don't retroactively judge spans that were stored before the eval existed.
 
-Go to Dash0 → AI → Evals and click **+ New eval**. The files in `dash0/evals/` show the logic for each eval. Create them manually in the UI:
+Go to Dash0 → AI → Evals and click **+ New eval**. The files in `dash0/evals/` show the logic for each eval. Create them manually in the UI.
+
+**Screenshot placeholder**: The Dash0 eval creation form (e.g., creating the groundedness eval).
+*Add `docs/screenshots/dash0-eval-create-form.png`*
 
 **Common to all three evals:**
 
@@ -2000,13 +2003,9 @@ Classify the customer's (role "user") question into exactly one topic.
 
 ### Apply them
 
-```bash
-evals-gate dash0-evals
-```
+After creating all three evals in the Dash0 UI, they're ready to judge traffic. The files in `dash0/evals/` are saved here as reference for the eval logic.
 
-After creating all three evals in the Dash0 UI, they're ready to judge traffic. The files in `dash0/evals/` are saved here as reference; the CLI no longer applies them since your dash0 CLI version doesn't support `Dash0GenerativeAiEvaluation` resources yet.
-
-**Screenshot**: After creating all three evals, go to Dash0 → AI → Evals. Take a screenshot showing all three enabled.
+**Screenshot**: After creating all three evals, go to Dash0 → AI → Evals. Take a screenshot showing all three evals in the list, all enabled.
 *Add `docs/screenshots/dash0-evals-folder.png`*
 
 ## Step 7 – Reproduce the incident and watch the verdicts arrive

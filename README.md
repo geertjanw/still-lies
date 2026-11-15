@@ -67,15 +67,23 @@ This builds `agent/target/support-agent.jar` and `cli/target/evals-gate.jar`. Ru
 
 Do this before you send any traffic: Dash0 Evals don't backfill, so spans that arrive before an eval exists are never judged.
 
-In Dash0, go to AI → Evals and click **+ New eval**. Create three evals (refer to `dash0/evals/` in the repo for the full logic):
+In Dash0, go to AI → Evals and click **+ New eval**. Create three evals (refer to `dash0/evals/` in the repo for the full prompts and configuration):
 
-1. **groundedness** — Scores 0–1 how fully every factual claim in the answer is supported by the retrieved policy. Threshold 0.7.
-2. **topic** — Categorizes the customer question (billing, shipping, account, or other).
-3. **answered-the-question** — Boolean: does the answer address what the customer asked.
+1. **groundedness** — Scores 0–1 how fully every factual claim in the answer is supported by the retrieved policy. Threshold 0.7. Judge model: Standard.
+2. **topic** — Categorizes the customer question (billing, shipping, account, or other). Judge model: Light.
+3. **answered-the-question** — Boolean: does the answer address what the customer asked. Judge model: Light.
 
 All three should match on `service.name = support-agent` and `gen_ai.operation.name is_set`.
 
-**To screenshot**: After creating all three, open Dash0 → AI → Evals. You should see three enabled evals. Take a screenshot of the evals list.
+**Screenshots to capture while creating:**
+- After creating the first eval (groundedness), take a screenshot of the eval detail page showing the system/user prompts and threshold
+- After all three are created, screenshot the Evals list showing all three enabled
+
+![Dash0 eval creation form](docs/screenshots/dash0-eval-create-form.png)
+*Creating an eval in the Dash0 UI*
+
+![Dash0 Evals folder](docs/screenshots/dash0-evals-folder.png)
+*The three evals created in the Dash0 UI, ready to judge incoming traffic*
 
 ![Dash0 Evals folder](docs/screenshots/dash0-evals-folder.png)
 *The three evals created in the Dash0 UI, ready to judge incoming traffic*
