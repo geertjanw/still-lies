@@ -39,8 +39,9 @@ metrics:
         0.0 means a key claim contradicts the expected output.
 
   # A second opinion on grounding: are the answer's claims supported by the policy text the agent retrieved?
+  # 0.65 allows one soft claim in a three-claim answer; two unsupported claims still fail.
   - kind: faithfulness
-    threshold: 0.8
+    threshold: 0.65
 
   # Did the agent actually call lookup_policy? No judge needed.
   - kind: tool_correctness

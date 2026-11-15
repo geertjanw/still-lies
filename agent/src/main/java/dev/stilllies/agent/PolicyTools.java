@@ -20,8 +20,13 @@ public class PolicyTools {
 
   private final List<Call> calls = new CopyOnWriteArrayList<>();
 
-  @Tool(name = "lookup_policy", description = "Returns the current Acme Cloud policy text for a topic.")
-  public String lookupPolicy(@ToolParam(description = "The policy topic") Topic topic) {
+  @Tool(name = "lookup_policy", description = "Returns the current Acme Cloud policy text for a topic. "
+      + "refunds: refunds, cancellations, stopping or changing a monthly or annual plan, and account credit. "
+      + "shipping: hardware orders, delivery times and shipping costs. "
+      + "account: users, sign-in, passwords and locked accounts.")
+  public String lookupPolicy(
+      @ToolParam(description = "refunds for anything about money back, cancelling or stopping a plan; "
+          + "shipping for deliveries; account for users and sign-in") Topic topic) {
     String text = read(topic);
     calls.add(new Call("lookup_policy", Map.of("topic", topic.name()), text));
     return text;
