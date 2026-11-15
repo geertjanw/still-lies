@@ -79,7 +79,7 @@ All three should match on `service.name = support-agent` and `gen_ai.operation.n
 
 **Create each eval:**
 
-1. Go to Dash0 → AI → Evals and click **+ New eval**
+1. Go to Dash0 → AI Observability → Evals and click **+ New eval**
    
    ![Dash0 Evals page](docs/screenshots/dash0-eval-create-form.png)
    *Click + New eval to start creating*
