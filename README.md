@@ -79,11 +79,31 @@ Go to Dash0 → AI Observability → Evals. You'll set up three evals: two from 
 
 **Create Hallucination (built-in)**
 
-Find **Hallucination** in the Grounding / RAG section. This will check whether the agent's answer stays true to the policy it retrieved. Click to enable it. No configuration needed.
+Find **Hallucination** in the Grounding / RAG section. This will check whether the agent's answer stays true to the policy it retrieved. Click **+ Create manually** and copy this configuration:
+- Name: **Hallucination**
+- Output: **Scalar** (scale of 0–1)
+- Judge model: **Light**
+- System prompt: "Determine if the response is grounded. Grounded = claims in the response are supported by facts in the context. Not grounded = claims are contradicted by or absent from the context. Score 0 = not grounded, 1 = grounded."
+- User prompt: "Is the response grounded in the context?"
+- Filters: Add two filters:
+  - `service.name` `is` `support-agent`
+  - `gen_ai.operation.name` `is_set` (leave value blank)
+
+Click Save.
 
 **Create Answer relevance (built-in)**
 
-Find **Answer relevance** in the Response quality section. This will check whether the agent actually answered the customer's question. Click to enable it. No configuration needed.
+Find **Answer relevance** in the Response quality section. This will check whether the agent actually answered the customer's question. Click **+ Create manually** and copy this configuration:
+- Name: **Answer relevance**
+- Output: **Scalar** (scale of 0–1)
+- Judge model: **Light**
+- System prompt: "Determine if the response answers the question. Score 0 = does not answer, 1 = fully answers."
+- User prompt: "Did the response answer the question?"
+- Filters: Add two filters:
+  - `service.name` `is` `support-agent`
+  - `gen_ai.operation.name` `is_set` (leave value blank)
+
+Click Save.
 
 **Create Topic (custom)**
 
