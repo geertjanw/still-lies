@@ -112,19 +112,30 @@ Click Save.
 **Create Topic (custom)**
 
 Click **+ Create manually** and configure a new eval:
-- Name: **Topic**
-- Output: **Numeric** (scale of 0–1)
-- Judge model: **Light**
-- System prompt: "Classify the customer's question by topic. billing = refunds/plans/cancellations. shipping = delivery/costs. account = users/sign-in. other = anything else. Return 1.0 if you can classify, 0.0 if none of these apply."
-- User prompt: "Classify this customer question into one topic. Topic: {{gen_ai.input.messages}}"
-- Filters: Add one filter:
+
+**General section (top of form)**
+
+![Topic eval form: General section](docs/screenshots/dash0-topic-eval-form-top.png)
+*Enter Name and Prompts in the General section*
+
+- **Name:** `Topic`
+- **Description:** (optional; you can leave blank)
+- **System prompt:** `Classify the customer's question by topic. billing = refunds/plans/cancellations. shipping = delivery/costs. account = users/sign-in. other = anything else.`
+- **User prompt:** `Classify this customer question into one topic.`
+
+**Output, Judge, and Match sections (bottom of form)**
+
+![Topic eval form: Output and Judge settings](docs/screenshots/dash0-topic-eval-form-bottom.png)
+*Configure Output type, Judge model, Match filters, and Sample rate*
+
+- **Output:** `Categorical`
+- **Options:** `billing` `shipping` `account` `other` (one per line)
+- **Judge model:** `Light`
+- **Trigger:** `Any GenAI operation` (leave default)
+- **Span filters:** Add two filters:
+  - `service.name` `is` `support-agent`
   - `gen_ai.operation.name` `is_set` (leave value blank)
-
-![Topic eval form (top)](docs/screenshots/dash0-topic-eval-form-top.png)
-*Enter Name and Prompts at the top of the form*
-
-![Topic eval form (bottom)](docs/screenshots/dash0-topic-eval-form-bottom.png)
-*Set Match filters and Judge parameters at the bottom*
+- **Sample rate:** `20` (percent)
 
 Click Save. All three evals are now set up and waiting for traffic.
 
