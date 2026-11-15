@@ -126,7 +126,7 @@ Click **+ Create manually** and configure a new eval:
 - **Span filters:** Add two filters:
   - `gen_ai.operation.name` `is_set` (leave value blank)
   - Click **Add filter** to add another: `service.name` `is` `support-agent`
-- **Output:** `Numeric` (score from 0.0 to 1.0)
+- **Output type:** `Numeric` (score from 0.0 to 1.0)
 
 ![Topic eval form: General and Prompts sections](docs/screenshots/dash0-topic-eval-form-top.png)
 *Configure Name and Prompts at the top of the form*
