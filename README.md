@@ -117,43 +117,34 @@ Click Save.
 
 **Create Topic (custom)**
 
-Click **+ Create manually** and configure each section:
+Click **+ Create manually** and configure a new eval:
 
-##### General section
+![Topic eval form: General and Prompts sections](docs/screenshots/dash0-topic-eval-form-top.png)
 
-![General section](docs/screenshots/dash0-topic-general.png)
-
+**General section (in top screenshot):**
 - **Name:** Enter `Topic`
 - **Description:** Enter `Classifies the customer's question by topic: billing, shipping, account, or other.`
 
-##### Prompts section
-
-![Prompts section](docs/screenshots/dash0-topic-prompts.png)
-
+**Prompts section (in top screenshot):**
 - **System prompt:** Enter `Sets the judge's role and scoring context. Optional.`
 - **User prompt:** Enter `Question: {{ gen_ai.input.messages }} Answer: {{ gen_ai.output.messages }} Rate how fully the answer resolves the question, from 0.0 (not at all) to 1.0 (completely).`
 - **Judge partial prompts:** Leave toggled off
 
-##### Match section
+---
 
-![Match section](docs/screenshots/dash0-topic-match.png)
+![Topic eval form: Match, Judge, and Output sections](docs/screenshots/dash0-topic-eval-form-bottom.png)
 
+**Match section (in bottom screenshot):**
 - **Trigger:** Leave as `Any GenAI operation`
 - **Span filters:** Add two filters:
-  1. Click the first field and select `gen_ai.operation.name`, set to `is_set`, leave value blank
-  2. Click **Add filter** and add second filter: `service.name` `is` `support-agent`
+  1. First filter: `gen_ai.operation.name` `is_set` (leave value blank)
+  2. Click **Add filter** and add: `service.name` `is` `support-agent`
 - **Sample rate:** Leave as `20` %
 
-##### Judge section
-
-![Judge section](docs/screenshots/dash0-topic-judge.png)
-
+**Judge section (in bottom screenshot):**
 - **Model class:** Select `Light`
 
-##### Output section
-
-![Output section](docs/screenshots/dash0-topic-output.png)
-
+**Output section (in bottom screenshot):**
 - **Output type:** Select `Numeric`
 - **Threshold:** Leave as `Not set`
 
