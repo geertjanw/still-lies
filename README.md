@@ -161,7 +161,7 @@ java -jar agent/target/support-agent.jar --spring.profiles.active=dash0 --agent.
 In terminal 2, send 51 requests:
 
 ```bash
-evals-gate traffic
+java -jar cli/target/evals-gate.jar traffic
 ```
 
 After a few minutes, the evals will have judged all the requests. Open a `chat` span from `support-agent` in Dash0 and look at its **Evals** tab. Hallucination fails on the refund questions, while every other check is green.
