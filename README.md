@@ -69,6 +69,8 @@ Do this before you send any traffic: Dash0 Evals don't backfill, so spans that a
 evals-gate dash0-evals
 ```
 
+**To capture**: After the command succeeds, open Dash0 → AI → Evals. You should see three enabled evals in the `evals-gate` folder (groundedness, topic, answered-the-question). Take a screenshot of the evals list.
+
 ![Dash0 Evals folder](docs/screenshots/dash0-evals-folder.png)
 *The three evals in the evals-gate folder, ready to judge incoming traffic*
 
@@ -88,8 +90,21 @@ evals-gate traffic
 
 After a few minutes, open a `chat` span from `support-agent` in Dash0 and look at its **Evals** tab. Groundedness fails on the refund questions, while every other check is green.
 
+**To capture (Evals on a single span)**:
+1. In Dash0, navigate to Traces
+2. Find a trace from `support-agent` (filter by service name if needed)
+3. Open the trace and select the second `chat` span (the one with the final answer)
+4. In the span details sidebar, click the **Evals** tab
+5. Take a screenshot showing the three verdicts, with Groundedness failing
+
 ![Chat span with Evals verdicts](docs/screenshots/dash0-chat-span-verdicts.png)
 *Groundedness fails while Topic and Answered the question pass*
+
+**To capture (Eval results across all spans)**:
+1. In Dash0, navigate to AI → GenAI evaluation results
+2. Look for a view that groups verdicts by eval name and label
+3. Verify that Groundedness failures are clustered on billing questions, while Topic and Answered the question are mostly passing across all topics
+4. Take a screenshot showing this distribution
 
 ![Eval results by topic](docs/screenshots/dash0-eval-results-by-topic.png)
 *Groundedness failures cluster on billing, passes on shipping and account*

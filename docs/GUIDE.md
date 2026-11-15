@@ -2044,7 +2044,7 @@ This runs `dash0 --experimental apply -f dash0/evals/`. Evals are a beta feature
 
 Check in Dash0: open the Evals page (in the AI section of the navigation). You should see the three evals in the `evals-gate` folder, all enabled. Change a prompt in the YAML and run `evals-gate dash0-evals` again: it updates in place, and the eval list still has three entries.
 
-**Screenshot**: The Dash0 Evals page showing the three evals (groundedness, topic, answered-the-question) in the `evals-gate` folder, all enabled.
+**Screenshot**: Navigate to Dash0 → AI → Evals. Look for the `evals-gate` folder and take a screenshot showing all three evals enabled.
 *Add `docs/screenshots/dash0-evals-folder.png`*
 
 ## Step 7 – Reproduce the incident and watch the verdicts arrive
@@ -2070,12 +2070,12 @@ Verdicts arrive a short while after the spans, because judging runs asynchronous
 
 - **On a span:** open a trace from `support-agent`, select the second `chat` span, and open the **Evals** tab in the span sidebar. Three verdicts: Topic (`billing`), Answered the question (`pass`) and Groundedness (`fail`, with a score below 0.7 and the judge's explanation, which usually names the 30-day versus 14-day conflict).
 
-  **Screenshot**: A chat span with the Evals tab open, showing the three verdicts (Topic, Answered, Groundedness) and the groundedness failure with the judge's explanation.
+  **Screenshot**: In Dash0, navigate to Traces → find a `support-agent` span → open a trace → select the second `chat` span → click the **Evals** tab in the sidebar. Take a screenshot showing all three verdicts with Groundedness failing.
   *Add `docs/screenshots/dash0-chat-span-verdicts.png`*
 
 - **Across spans:** the GenAI evaluation results view lists all verdicts and lets you group by eval and label. Groundedness failures cluster on refund questions; shipping and account pass.
 
-  **Screenshot**: The GenAI evaluation results view grouped by eval name, showing groundedness failures on billing questions and passes on shipping/account.
+  **Screenshot**: In Dash0, navigate to AI → GenAI evaluation results. Look for a view grouping by eval name and label (or topic). Take a screenshot showing Groundedness failures concentrated on billing questions, with Topic and Answered passing across all topics.
   *Add `docs/screenshots/dash0-eval-results-by-topic.png`*
 
 This is the moment from the talk title: every conventional check is green (HTTP 200, low latency, the tool was called, the question was answered), and only the groundedness judge says the answer is wrong.
