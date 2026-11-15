@@ -114,20 +114,19 @@ Click Save.
 Click **+ Create manually** and configure a new eval:
 
 - **Name:** `Topic`
-- **Output:** `Categorical`
-- **Options:** `billing`, `shipping`, `account`, `other`
+- **System prompt:** `Sets the judge's role and scoring context. Optional.`
+- **User prompt:** `Question: {{ gen_ai.input.messages }} Answer: {{ gen_ai.output.messages }} Rate how fully the answer resolves the question, from 0.0 (not at all) to 1.0 (completely).`
 - **Judge model:** `Light`
-- **System prompt:** `Classify the customer's question by topic. billing = refunds/plans/cancellations. shipping = delivery/costs. account = users/sign-in. other = anything else.`
-- **User prompt:** `Classify this customer question into one topic.`
-- **Filters:** Add two filters:
-  - `service.name` `is` `support-agent`
+- **Span filters:** Add two filters:
   - `gen_ai.operation.name` `is_set` (leave value blank)
+  - Click **Add filter** to add another: `service.name` `is` `support-agent`
+- **Output:** `Numeric` (score from 0.0 to 1.0)
 
 ![Topic eval form: General and Prompts sections](docs/screenshots/dash0-topic-eval-form-top.png)
-*Fill in Name, System prompt, and User prompt*
+*Configure Name and Prompts at the top of the form*
 
-![Topic eval form: Match and Output sections](docs/screenshots/dash0-topic-eval-form-bottom.png)
-*Configure Span filters, Judge model (Model class), and Output type with Options*
+![Topic eval form: Match, Judge, and Output sections](docs/screenshots/dash0-topic-eval-form-bottom.png)
+*Set Span filters in Match section, Model class (Light) in Judge section, and Output type (Numeric) at the bottom*
 
 Click Save. All three evals are now set up and waiting for traffic.
 
