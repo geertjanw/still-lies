@@ -61,7 +61,9 @@ This builds `agent/target/support-agent.jar` and `cli/target/evals-gate.jar`. Ru
 
 `evals-gate check` verifies your setup: it looks for Java 21+, Maven, `uv`, the `dash0` CLI, both jars, and `.env` with all required keys filled in. If all pass, it prints "all good" with your Java version. If anything is missing, it lists what to install or configure. This is your confirmation that you're ready to run the demo.
 
-## The loop
+## Run the demo
+
+This is the production-to-CI loop: detect failures in production with Dash0, export them into a golden dataset, and gate new code with harness-evals to prevent regressions. Follow these steps in order.
 
 ### 1. Create the three evals in Dash0
 
@@ -75,12 +77,12 @@ In Dash0, go to AI → Evals and click **+ New eval**. Create three evals (refer
 
 All three should match on `service.name = support-agent` and `gen_ai.operation.name is_set`.
 
-**Screenshots to capture while creating:**
-- After creating the first eval (groundedness), take a screenshot of the eval detail page showing the system/user prompts and threshold
-- After all three are created, screenshot the Evals list showing all three enabled
+**Screenshot 1**: While creating the first eval (groundedness), take a screenshot of the eval detail page showing the system/user prompts and threshold.
 
 ![Dash0 eval creation form](docs/screenshots/dash0-eval-create-form.png)
 *Creating an eval in the Dash0 UI*
+
+**Screenshot 2**: After all three are created, go to Dash0 → AI → Evals and screenshot the list showing all three enabled.
 
 ![Dash0 Evals folder](docs/screenshots/dash0-evals-folder.png)
 *The three evals in the Dash0 UI, ready to judge incoming traffic*
