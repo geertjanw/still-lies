@@ -20,7 +20,7 @@ target:
 
 judge_llm:
   provider: openai
-  name: gpt-4o
+  name: gpt-6.1-terra   # accuracy-focused, lowest hallucination rate in the GPT-6 family; gpt-4o gets 3 RPM on new accounts
 
 metrics:
   # The Dash0 groundedness rubric. In CI the judge compares against the reviewed expected answer.
