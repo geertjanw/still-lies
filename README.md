@@ -120,5 +120,5 @@ before/after comparison. When billing hasn't recovered, it continues as new, up 
 | Spans arrive, but no verdicts | Evals created after the traffic (no backfill), or a filter doesn't match `service.name = support-agent` |
 | `run this from the repository root` | `cd` to the folder with `sql/` and `evals/` |
 | harness-evals exit 2 | Config error: no `OPENAI_API_KEY`, or no baseline for `eval-baseline` (check `.evals/baselines/`) |
-| `could not start uvx` | Install uv, or `pipx install 'harness-evals[llm]==0.29.1'` (an installed harness-evals is used first) |
+| `could not start uvx` | Install uv, or `pipx install 'harness-evals[llm,harness]==0.29.1'` (an installed harness-evals is used first) |
 | `temporal start`: connection refused | Start `temporal server start-dev` first |

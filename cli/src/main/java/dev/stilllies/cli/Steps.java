@@ -22,7 +22,7 @@ import java.util.stream.Stream;
 public final class Steps {
 
   public static final String EVAL_CONFIG = "evals/billing.eval.yaml";
-  public static final String HARNESS_EVALS = "harness-evals[llm]==0.29.1";
+  public static final String HARNESS_EVALS = "harness-evals[llm,harness]==0.29.1";
 
   private Steps() {}
 
