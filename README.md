@@ -65,31 +65,40 @@ This builds `agent/target/support-agent.jar` and `cli/target/evals-gate.jar`. Ru
 
 This is the production-to-CI loop: detect failures in production with Dash0, export them into a golden dataset, and gate new code with harness-evals to prevent regressions. Follow these steps in order.
 
-### 1. Enable three evals in Dash0
+### 1. Set up three evals in Dash0
 
 Do this before you send any traffic: Dash0 Evals don't backfill, so spans that arrive before an eval exists are never judged.
 
-Go to Dash0 → AI Observability → Evals. Enable two built-in evals and create one custom:
+Go to Dash0 → AI Observability → Evals. You'll set up three evals: two from Dash0's built-in templates and one you'll create.
 
-**Built-in evals to enable:**
+![Dash0 Evals page](docs/screenshots/dash0-eval-create-form.png)
+*The Evals page with Templates tab showing built-in eval options*
 
-1. **Hallucination** (in Grounding / RAG section) — Checks if response claims are supported by context. This replaces our "groundedness" eval.
+**Step 1: Enable Hallucination (built-in)**
 
-2. **Answer relevance** (in Response quality section) — Checks if the response addresses the customer's question. This replaces our "answered-the-question" eval.
+In the Evals Templates, find **Hallucination** (under Grounding / RAG). This eval checks whether the agent's answer stays true to the policy it retrieved. Enable it. No configuration needed.
 
-These require no configuration, just enable them.
+**Step 2: Enable Answer relevance (built-in)**
 
-**Custom eval to create:**
+Find **Answer relevance** (under Response quality). This eval checks whether the agent actually answered the customer's question. Enable it. No configuration needed.
 
-3. Click **+ Create manually** and set up a **Topic** classifier:
-   - Name: **Topic**
-   - Output: **Categorical** with options: billing, shipping, account, other
-   - Judge model: **Light**
-   - System prompt: Classify the customer's question by topic. billing = refunds/plans/cancellations. shipping = delivery/costs. account = users/sign-in. other = anything else.
-   - User prompt: Classify this customer question into one topic.
-   - Filters: `service.name is support-agent` and `gen_ai.operation.name is_set`
+**Step 3: Create Topic (custom)**
 
-All three should filter on `service.name = support-agent` and `gen_ai.operation.name is_set`. After enabling and creating, all three are ready to judge incoming traffic.
+Click **+ Create manually** and configure a new eval:
+- Name: **Topic**
+- Output: **Categorical**
+- Options: billing, shipping, account, other
+- Judge model: **Light**
+- System prompt: "Classify the customer's question by topic. billing = refunds/plans/cancellations. shipping = delivery/costs. account = users/sign-in. other = anything else."
+- User prompt: "Classify this customer question into one topic."
+- Filters: Add two filters:
+  - `service.name` `is` `support-agent`
+  - `gen_ai.operation.name` `is_set` (leave value blank)
+
+After these three are set up, they're ready to judge incoming traffic.
+
+![Built-in eval templates](docs/screenshots/dash0-evals-folder.png)
+*Examples of built-in evals available in Dash0*
 
 ### 2. Reproduce the incident
 
