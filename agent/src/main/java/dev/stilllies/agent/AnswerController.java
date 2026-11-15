@@ -71,6 +71,11 @@ public class AnswerController {
         .tools(tools)
         .call()
         .content();
-    return new Answer(answer, tools.calls(), tools.context(), variant);
+    // What the answer may legitimately draw on: the retrieved policy text, and what the customer said.
+    // harness-evals' faithfulness checks every claim against this list, so without the question a correct
+    // answer that repeats "you bought it 40 days ago" would count that as an unsupported claim.
+    List<String> context = new java.util.ArrayList<>(tools.context());
+    context.add("Customer question: " + question.input());
+    return new Answer(answer, tools.calls(), context, variant);
   }
 }
