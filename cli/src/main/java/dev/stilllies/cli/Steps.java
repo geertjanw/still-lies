@@ -61,11 +61,6 @@ public final class Steps {
 
   // ------------------------------------------------------------------ phase 1 and 2: traffic and Dash0 evals
 
-  /** Creates or updates the three evals in Dash0 from dash0/evals/. */
-  public static void dash0Evals() {
-    Proc.run(List.of("dash0", "--experimental", "apply", "-f", "dash0/evals/"));
-  }
-
   /** Sends every question in traffic/questions.txt to the agent, {@code rounds} times. */
   public static void traffic(int rounds, String agentUrl) {
     ObjectMapper json = new ObjectMapper();

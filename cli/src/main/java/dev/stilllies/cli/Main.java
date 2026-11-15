@@ -18,8 +18,7 @@ public final class Main {
 
       setup
         check                         check every tool and setting the demo needs
-      phase 1 and 2: the agent and the Dash0 evals
-        dash0-evals                   create or update the three evals in Dash0 from dash0/evals/
+      phase 2: the agent and traffic
         traffic [--rounds 3]          send traffic/questions.txt to the agent (AGENT_URL)
       phases 3 and 4: export, DuckDB, dataset
         export [--from now-24h]       eval verdicts and agent spans from Dash0 into data/
@@ -55,7 +54,6 @@ public final class Main {
     try {
       switch (command) {
         case "check" -> exit = Steps.check();
-        case "dash0-evals" -> Steps.dash0Evals();
         case "traffic" -> Steps.traffic(args.intOption("rounds", 3), Env.get("AGENT_URL", "http://localhost:8080/answer"));
         case "export" -> Steps.export(args.option("from", Env.get("FROM", "now-24h")));
         case "export-verdicts" -> Steps.exportVerdicts(args.option("from", Env.get("FROM", "now-24h")));
