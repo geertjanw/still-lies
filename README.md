@@ -72,15 +72,24 @@ Do this before you send any traffic: Dash0 Evals don't backfill, so spans that a
 Go to Dash0 → AI Observability → Evals. You'll set up three evals: two from Dash0's built-in templates and one you'll create.
 
 ![Dash0 Evals page](docs/screenshots/dash0-eval-create-form.png)
-*The Evals page with Templates tab showing built-in eval options*
+*The Evals Templates tab, showing built-in eval options*
+
+![Built-in eval templates](docs/screenshots/dash0-evals-folder.png)
+*Find Hallucination under Grounding / RAG, and Answer relevance under Response quality*
 
 **Step 1: Enable Hallucination (built-in)**
 
-In the Evals Templates, find **Hallucination** (under Grounding / RAG). This eval checks whether the agent's answer stays true to the policy it retrieved. Enable it. No configuration needed.
+Find **Hallucination** in the Grounding / RAG section. This eval checks whether the agent's answer stays true to the policy it retrieved. Click to enable it. No configuration needed.
+
+![Hallucination eval enabled](docs/screenshots/dash0-hallucination-enabled.png)
+*Hallucination added to your active evals*
 
 **Step 2: Enable Answer relevance (built-in)**
 
-Find **Answer relevance** (under Response quality). This eval checks whether the agent actually answered the customer's question. Enable it. No configuration needed.
+Find **Answer relevance** in the Response quality section. This eval checks whether the agent actually answered the customer's question. Click to enable it. No configuration needed.
+
+![Answer relevance eval enabled](docs/screenshots/dash0-answer-relevance-enabled.png)
+*Answer relevance added to your active evals*
 
 **Step 3: Create Topic (custom)**
 
@@ -95,10 +104,10 @@ Click **+ Create manually** and configure a new eval:
   - `service.name` `is` `support-agent`
   - `gen_ai.operation.name` `is_set` (leave value blank)
 
-After these three are set up, they're ready to judge incoming traffic.
+![Topic eval form](docs/screenshots/dash0-topic-form.png)
+*Creating the Topic classifier*
 
-![Built-in eval templates](docs/screenshots/dash0-evals-folder.png)
-*Examples of built-in evals available in Dash0*
+After all three are enabled or created, they're ready to judge incoming traffic.
 
 ### 2. Reproduce the incident
 
