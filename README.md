@@ -71,12 +71,14 @@ Create the evals now so they're ready when traffic arrives. Dash0 Evals don't ba
 
 Go to Dash0 → AI Observability → Evals. You'll set up three evals: two from Dash0's built-in templates and one you'll create.
 
+#### 1.1 Set up the Hallucination eval
+
 First, click the **+ Create new** dropdown to choose between starting from a template or creating manually:
 
 ![Evals Create dropdown](docs/screenshots/dash0-eval-templates-dropdown.png)
 *Click **+ Create new** then choose **From template***
 
-Then find the built-in templates for Hallucination and Answer relevance:
+Then find the built-in templates:
 
 ![Built-in eval templates](docs/screenshots/dash0-evals-folder.png)
 *Find Hallucination under Grounding / RAG, and Answer relevance under Response quality*
@@ -95,6 +97,8 @@ Find **Hallucination** in the Grounding / RAG section. This will check whether t
 
 Click Save.
 
+#### 1.2 Set up the Answer relevance eval
+
 **Create Answer relevance (built-in)**
 
 Find **Answer relevance** in the Response quality section. This will check whether the agent actually answered the customer's question. Click **+ Create manually** and copy this configuration:
@@ -108,6 +112,8 @@ Find **Answer relevance** in the Response quality section. This will check wheth
   - `gen_ai.operation.name` `is_set` (leave value blank)
 
 Click Save.
+
+#### 1.3 Set up the Topic eval
 
 **Create Topic (custom)**
 
