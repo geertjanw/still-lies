@@ -111,34 +111,23 @@ Click Save.
 
 **Create Topic (custom)**
 
-Click **+ Create manually** and configure a new eval following the form order:
+Click **+ Create manually** and configure a new eval:
 
-![Topic eval form: General and Prompts](docs/screenshots/dash0-topic-eval-form-top.png)
-
-**General section:**
 - **Name:** `Topic`
-- **Description:** (leave blank)
-
-**Prompts section:**
+- **Output:** `Categorical`
+- **Options:** `billing`, `shipping`, `account`, `other`
+- **Judge model:** `Light`
 - **System prompt:** `Classify the customer's question by topic. billing = refunds/plans/cancellations. shipping = delivery/costs. account = users/sign-in. other = anything else.`
 - **User prompt:** `Classify this customer question into one topic.`
-- **Judge partial prompts:** (toggle off)
-
-![Topic eval form: Match, Judge, and Output](docs/screenshots/dash0-topic-eval-form-bottom.png)
-
-**Match section:**
-- **Trigger:** `Any GenAI operation`
-- **Span filters:** Add two filters:
+- **Filters:** Add two filters:
   - `service.name` `is` `support-agent`
   - `gen_ai.operation.name` `is_set` (leave value blank)
-- **Sample rate:** `20` %
 
-**Judge section:**
-- **Model class:** `Light`
+![Topic eval form: General and Prompts sections](docs/screenshots/dash0-topic-eval-form-top.png)
+*Fill in Name, System prompt, and User prompt*
 
-**Output section:**
-- **Output type:** `Categorical`
-- **Options:** `billing`, `shipping`, `account`, `other`
+![Topic eval form: Match and Output sections](docs/screenshots/dash0-topic-eval-form-bottom.png)
+*Configure Span filters, Judge model (Model class), and Output type with Options*
 
 Click Save. All three evals are now set up and waiting for traffic.
 
