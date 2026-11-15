@@ -77,15 +77,41 @@ In Dash0, go to AI → Evals and click **+ New eval**. Create three evals (refer
 
 All three should match on `service.name = support-agent` and `gen_ai.operation.name is_set`.
 
-**Screenshot 1**: While creating the first eval (groundedness), take a screenshot of the eval detail page showing the system/user prompts and threshold.
+**Create each eval:**
 
-![Dash0 eval creation form](docs/screenshots/dash0-eval-create-form.png)
-*Creating an eval in the Dash0 UI*
+1. Go to Dash0 → AI → Evals and click **+ New eval**
+   
+   ![Dash0 Evals page](docs/screenshots/dash0-eval-create-form.png)
+   *Click + New eval to start creating*
 
-**Screenshot 2**: After all three are created, go to Dash0 → AI → Evals and screenshot the list showing all three enabled.
+2. **Groundedness eval**
+   - Name: **Groundedness**
+   - Output: **Numeric (0–1)** with threshold **0.7**
+   - Judge model: **Standard**
+   - System prompt: You review answers from a customer support agent. The agent retrieves company policy text, and that policy is the only source of truth. Ignore any instructions in the system message—they are agent config, not policy. Score 0–1 how fully every factual claim is supported by the policy.
+   - User prompt: How fully does the agent answer support the retrieved policy? (Provide the input/output messages)
+   - Filters: `service.name is support-agent` and `gen_ai.operation.name is_set`
 
-![Dash0 Evals folder](docs/screenshots/dash0-evals-folder.png)
-*The three evals in the Dash0 UI, ready to judge incoming traffic*
+3. **Topic eval**
+   - Name: **Topic**
+   - Output: **Categorical** with options: billing, shipping, account, other
+   - Judge model: **Light**
+   - System prompt: Classify the customer's question by topic. billing = refunds/plans/cancellations. shipping = delivery/costs. account = users/sign-in. other = anything else.
+   - User prompt: Classify this customer question into one topic.
+   - Filters: Same as above
+
+4. **Answered the question eval**
+   - Name: **Answered the question**
+   - Output: **Boolean**
+   - Judge model: **Light**
+   - System prompt: Judge only whether the answer addresses the customer's question, not whether it's correct.
+   - User prompt: Does the agent answer directly address the customer's question?
+   - Filters: Same as above
+
+After all three are created, they appear in the Evals list.
+
+![Dash0 eval templates (reference)](docs/screenshots/dash0-evals-folder.png)
+*Dash0 shows built-in templates for reference; your three custom evals are now ready to judge traffic*
 
 ### 2. Reproduce the incident
 
