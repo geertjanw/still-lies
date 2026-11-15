@@ -120,6 +120,7 @@ Click Save.
 Click **+ Create manually** and configure a new eval:
 
 - **Name:** `Topic`
+- **Description:** `Classifies the customer's question by topic: billing, shipping, account, or other.`
 - **System prompt:** `Sets the judge's role and scoring context. Optional.`
 - **User prompt:** `Question: {{ gen_ai.input.messages }} Answer: {{ gen_ai.output.messages }} Rate how fully the answer resolves the question, from 0.0 (not at all) to 1.0 (completely).`
 - **Judge model:** `Light`
