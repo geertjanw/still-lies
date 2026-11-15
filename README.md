@@ -117,25 +117,47 @@ Click Save.
 
 **Create Topic (custom)**
 
-Click **+ Create manually** and configure a new eval:
+Click **+ Create manually** and configure each section:
 
-- **Name:** `Topic`
-- **Description:** `Classifies the customer's question by topic: billing, shipping, account, or other.`
-- **System prompt:** `Sets the judge's role and scoring context. Optional.`
-- **User prompt:** `Question: {{ gen_ai.input.messages }} Answer: {{ gen_ai.output.messages }} Rate how fully the answer resolves the question, from 0.0 (not at all) to 1.0 (completely).`
-- **Judge model:** `Light`
+##### General section
+
+![General section](docs/screenshots/dash0-topic-general.png)
+
+- **Name:** Enter `Topic`
+- **Description:** Enter `Classifies the customer's question by topic: billing, shipping, account, or other.`
+
+##### Prompts section
+
+![Prompts section](docs/screenshots/dash0-topic-prompts.png)
+
+- **System prompt:** Enter `Sets the judge's role and scoring context. Optional.`
+- **User prompt:** Enter `Question: {{ gen_ai.input.messages }} Answer: {{ gen_ai.output.messages }} Rate how fully the answer resolves the question, from 0.0 (not at all) to 1.0 (completely).`
+- **Judge partial prompts:** Leave toggled off
+
+##### Match section
+
+![Match section](docs/screenshots/dash0-topic-match.png)
+
+- **Trigger:** Leave as `Any GenAI operation`
 - **Span filters:** Add two filters:
-  - `gen_ai.operation.name` `is_set` (leave value blank)
-  - Click **Add filter** to add another: `service.name` `is` `support-agent`
-- **Output type:** `Numeric` (score from 0.0 to 1.0)
+  1. Click the first field and select `gen_ai.operation.name`, set to `is_set`, leave value blank
+  2. Click **Add filter** and add second filter: `service.name` `is` `support-agent`
+- **Sample rate:** Leave as `20` %
 
-![Topic eval form: General and Prompts sections](docs/screenshots/dash0-topic-eval-form-top.png)
-*Configure Name and Prompts at the top of the form*
+##### Judge section
 
-![Topic eval form: Match, Judge, and Output sections](docs/screenshots/dash0-topic-eval-form-bottom.png)
-*Set Span filters in Match section, Model class (Light) in Judge section, and Output type (Numeric) at the bottom*
+![Judge section](docs/screenshots/dash0-topic-judge.png)
 
-Click Save. All three evals are now set up and waiting for traffic.
+- **Model class:** Select `Light`
+
+##### Output section
+
+![Output section](docs/screenshots/dash0-topic-output.png)
+
+- **Output type:** Select `Numeric`
+- **Threshold:** Leave as `Not set`
+
+Click **Save**. All three evals are now set up and waiting for traffic.
 
 ### 2. Send traffic so the evals judge it
 
