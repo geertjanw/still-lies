@@ -1,0 +1,45 @@
+kind: Dash0GenerativeAiEvaluation
+metadata:
+  name: still-lies-topic
+  labels:
+    dash0.com/origin: dash0-cli_still-lies-topic
+  annotations:
+    dash0.com/folder-path: /still-lies
+spec:
+  display:
+    name: Topic
+    description: Labels each customer question with its topic, so the other verdicts can be sliced by topic.
+  enabled: true
+  judge:
+    model: light
+    output:
+      kind: categorical
+      spec:
+        options:
+          - label: billing
+          - label: shipping
+          - label: account
+          - label: other
+    systemPrompt: |
+      You classify customer support questions by topic.
+      billing: payments, plans, refunds, cancellations, invoices.
+      shipping: delivery times, shipping costs, orders in transit.
+      account: users, sign-in, passwords, account settings.
+      other: anything else.
+    userPrompt: |
+      Conversation:
+      {{ gen_ai.input.messages }}
+
+      Classify the customer's (role "user") question into exactly one topic.
+  match:
+    filters:
+      - key: gen_ai.operation.name
+        operator: is_set
+      - key: service.name
+        operator: is
+        value: support-agent
+      - key: gen_ai.output.messages
+        operator: contains
+        value: '"finish_reason":"stop"'
+  sample:
+    rate: 1

@@ -1,0 +1,40 @@
+kind: Dash0GenerativeAiEvaluation
+metadata:
+  name: still-lies-answered-the-question
+  labels:
+    dash0.com/origin: dash0-cli_still-lies-answered-the-question
+  annotations:
+    dash0.com/folder-path: /still-lies
+spec:
+  display:
+    name: Answered the question
+    description: Checks whether the support agent's answer addresses what the customer asked.
+  enabled: true
+  judge:
+    model: light
+    output:
+      kind: boolean
+    systemPrompt: |
+      You review answers from a customer support agent.
+      You only judge whether the answer addresses the customer's question, not whether it is correct.
+    userPrompt: |
+      Conversation so far:
+      {{ gen_ai.input.messages }}
+
+      Agent answer:
+      {{ gen_ai.output.messages }}
+
+      Return true if the agent answer directly addresses the question in the customer's (role "user") message.
+      Return false if it ignores the question, answers a different question, or only asks for information it already has.
+  match:
+    filters:
+      - key: gen_ai.operation.name
+        operator: is_set
+      - key: service.name
+        operator: is
+        value: support-agent
+      - key: gen_ai.output.messages
+        operator: contains
+        value: '"finish_reason":"stop"'
+  sample:
+    rate: 1

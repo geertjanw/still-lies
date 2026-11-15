@@ -1,0 +1,68 @@
+# Offline regression evals for the billing answers of the support agent.
+# Run from the repository root (the CLI does): sink and baseline paths are relative to it; dataset is relative to this file.
+# Run:  java -jar cli/target/still-lies.jar eval            (score the running agent)
+#       java -jar cli/target/still-lies.jar eval-baseline   (save the current scores as the baseline)
+#       java -jar cli/target/still-lies.jar gate            (what CI runs: fail on a regression or a score below 0.8)
+# The CLI runs harness-evals with uvx, so the repository needs no Python code or virtualenv.
+name: billing-regressions
+
+# Written by sql/04_dataset.sql (the dataset command) from production failures and reviewed expected answers.
+dataset: ./billing-regressions.jsonl
+
+# The agent under test. harness-evals POSTs {"input": "<question>"} to it.
+target:
+  type: http
+  url: "${AGENT_URL}"
+  timeout_s: 60
+  output_path: "$.answer"
+  tool_calls_path: "$.tool_calls"
+  context_path: "$.context"
+
+judge_llm:
+  provider: openai
+  name: gpt-4o
+
+metrics:
+  # The Dash0 groundedness rubric. In CI the judge compares against the reviewed expected answer.
+  # (harness-evals 0.29.1 can't build answer_correctness from YAML: it needs an embedding object,
+  # so this geval does the "agrees with the reviewed answer" check.)
+  - kind: geval
+    threshold: 0.7
+    params:
+      name: groundedness
+      criteria: >-
+        A factual claim is any statement about time limits, amounts, eligibility,
+        what will happen, or what the customer can do. Greetings and offers to help are not claims.
+        Score from 0.0 to 1.0 how fully every factual claim in the output agrees with the
+        expected output, which reflects the company policy.
+        1.0 means every claim agrees. 0.5 means some claims agree and none contradict it.
+        0.0 means a key claim contradicts the expected output.
+
+  # A second opinion on grounding: are the answer's claims supported by the policy text the agent retrieved?
+  - kind: faithfulness
+    threshold: 0.8
+
+  # Did the agent actually call lookup_policy? No judge needed.
+  - kind: tool_correctness
+
+  # The exact bug from the incident must never come back. No judge needed.
+  - kind: regex
+    params:
+      negate: true
+      forbidden: "(?i)30[- ]?day"
+
+  # Quality is not bought with slowness: two model calls must finish within 10 seconds.
+  - kind: latency
+    params:
+      max_ms: 10000
+
+sinks:
+  - stdout
+  - type: json
+    path: results/run.jsonl
+    unique_per_run: true
+
+baseline:
+  store: json
+  path: .evals/baselines
+  tolerance: 0.05

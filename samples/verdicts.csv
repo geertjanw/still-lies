@@ -1,0 +1,307 @@
+otel.log.time,otel.trace.id,otel.span.id,dash0.gen_ai.evaluation.display_name,gen_ai.evaluation.score.label,gen_ai.evaluation.explanation
+2026-11-13T14:00:20Z,bdd640fb06671ad11c80317fa3b1799d,8b9d2434e465e150,Groundedness,fail,"The answer claims a 30-day refund window, but the policy allows refunds within 14 days only."
+2026-11-13T14:00:20Z,bdd640fb06671ad11c80317fa3b1799d,8b9d2434e465e150,Answered the question,pass,The answer addresses the customer's question directly.
+2026-11-13T14:00:20Z,bdd640fb06671ad11c80317fa3b1799d,8b9d2434e465e150,Topic,billing,The customer asks about billing.
+2026-11-13T14:02:20Z,17fc695a07a0ca6e0822e8f36c031199,b38a088ca65ed389,Groundedness,fail,"The answer claims a 30-day refund window, but the policy allows refunds within 14 days only."
+2026-11-13T14:02:20Z,17fc695a07a0ca6e0822e8f36c031199,b38a088ca65ed389,Answered the question,pass,The answer addresses the customer's question directly.
+2026-11-13T14:02:20Z,17fc695a07a0ca6e0822e8f36c031199,b38a088ca65ed389,Topic,billing,The customer asks about billing.
+2026-11-13T14:04:20Z,4737819096da1dac72ff5d2a386ecbe0,47229389571aa876,Groundedness,fail,"The answer claims a 30-day refund window, but the policy allows refunds within 14 days only."
+2026-11-13T14:04:20Z,4737819096da1dac72ff5d2a386ecbe0,47229389571aa876,Answered the question,pass,The answer addresses the customer's question directly.
+2026-11-13T14:04:20Z,4737819096da1dac72ff5d2a386ecbe0,47229389571aa876,Topic,billing,The customer asks about billing.
+2026-11-13T14:06:20Z,1a2a73ed562b0f79c37459eef50bea63,0b1f9163ce9ff57f,Groundedness,fail,"The answer claims a 30-day refund window, but the policy allows refunds within 14 days only."
+2026-11-13T14:06:20Z,1a2a73ed562b0f79c37459eef50bea63,0b1f9163ce9ff57f,Answered the question,pass,The answer addresses the customer's question directly.
+2026-11-13T14:06:20Z,1a2a73ed562b0f79c37459eef50bea63,0b1f9163ce9ff57f,Topic,billing,The customer asks about billing.
+2026-11-13T14:08:20Z,ec1b8ca1f91e1d4c1ff49b7889463e85,5c941cf0dc98d2c1,Groundedness,fail,"The answer claims a 30-day refund window, but the policy allows refunds within 14 days only."
+2026-11-13T14:08:20Z,ec1b8ca1f91e1d4c1ff49b7889463e85,5c941cf0dc98d2c1,Answered the question,pass,The answer addresses the customer's question directly.
+2026-11-13T14:08:20Z,ec1b8ca1f91e1d4c1ff49b7889463e85,5c941cf0dc98d2c1,Topic,billing,The customer asks about billing.
+2026-11-13T14:10:20Z,a9488d990bbb259911ce5dd2b45ed1f0,614ff3d719db3ad0,Groundedness,fail,"The answer claims a 30-day refund window, but the policy allows refunds within 14 days only."
+2026-11-13T14:10:20Z,a9488d990bbb259911ce5dd2b45ed1f0,614ff3d719db3ad0,Answered the question,pass,The answer addresses the customer's question directly.
+2026-11-13T14:10:20Z,a9488d990bbb259911ce5dd2b45ed1f0,614ff3d719db3ad0,Topic,billing,The customer asks about billing.
+2026-11-13T14:12:20Z,29a3b2e95d65a441d58842dea2bc372f,12476f57a5e5a5ab,Groundedness,fail,"The answer claims a 30-day refund window, but the policy allows refunds within 14 days only."
+2026-11-13T14:12:20Z,29a3b2e95d65a441d58842dea2bc372f,12476f57a5e5a5ab,Answered the question,pass,The answer addresses the customer's question directly.
+2026-11-13T14:12:20Z,29a3b2e95d65a441d58842dea2bc372f,12476f57a5e5a5ab,Topic,billing,The customer asks about billing.
+2026-11-13T14:14:20Z,3eabedcbbaa80dd488bd64072bcfbe01,3838b3268e944239,Groundedness,fail,"The answer claims a 30-day refund window, but the policy allows refunds within 14 days only."
+2026-11-13T14:14:20Z,3eabedcbbaa80dd488bd64072bcfbe01,3838b3268e944239,Answered the question,pass,The answer addresses the customer's question directly.
+2026-11-13T14:14:20Z,3eabedcbbaa80dd488bd64072bcfbe01,3838b3268e944239,Topic,billing,The customer asks about billing.
+2026-11-13T14:16:20Z,0e51f30dc6a7ee39c4b032ccd7c524a5,e9c349e03602f8ac,Groundedness,fail,"The answer claims a 30-day refund window, but the policy allows refunds within 14 days only."
+2026-11-13T14:16:20Z,0e51f30dc6a7ee39c4b032ccd7c524a5,e9c349e03602f8ac,Answered the question,pass,The answer addresses the customer's question directly.
+2026-11-13T14:16:20Z,0e51f30dc6a7ee39c4b032ccd7c524a5,e9c349e03602f8ac,Topic,billing,The customer asks about billing.
+2026-11-13T14:18:20Z,366eb16f508ebad7b7c93acfe059a0ee,23bed01d43cf2fde,Groundedness,fail,"The answer claims a 30-day refund window, but the policy allows refunds within 14 days only."
+2026-11-13T14:18:20Z,366eb16f508ebad7b7c93acfe059a0ee,23bed01d43cf2fde,Answered the question,pass,The answer addresses the customer's question directly.
+2026-11-13T14:18:20Z,366eb16f508ebad7b7c93acfe059a0ee,23bed01d43cf2fde,Topic,billing,The customer asks about billing.
+2026-11-13T14:20:20Z,bf3c4c06434308bc89fa6a688fb5d27b,2369b584ff5e9ff0,Groundedness,pass,Every claim in the answer is supported by the retrieved policy text.
+2026-11-13T14:20:20Z,bf3c4c06434308bc89fa6a688fb5d27b,2369b584ff5e9ff0,Answered the question,pass,The answer addresses the customer's question directly.
+2026-11-13T14:20:20Z,bf3c4c06434308bc89fa6a688fb5d27b,2369b584ff5e9ff0,Topic,shipping,The customer asks about shipping.
+2026-11-13T14:22:20Z,dc713d960c0fd195c17af08a1745d6d8,62801c4510435a10,Groundedness,pass,Every claim in the answer is supported by the retrieved policy text.
+2026-11-13T14:22:20Z,dc713d960c0fd195c17af08a1745d6d8,62801c4510435a10,Answered the question,pass,The answer addresses the customer's question directly.
+2026-11-13T14:22:20Z,dc713d960c0fd195c17af08a1745d6d8,62801c4510435a10,Topic,shipping,The customer asks about shipping.
+2026-11-13T14:24:20Z,405cacec877409a977d21e02ff01cf99,e2817efdae849217,Groundedness,pass,Every claim in the answer is supported by the retrieved policy text.
+2026-11-13T14:24:20Z,405cacec877409a977d21e02ff01cf99,e2817efdae849217,Answered the question,pass,The answer addresses the customer's question directly.
+2026-11-13T14:24:20Z,405cacec877409a977d21e02ff01cf99,e2817efdae849217,Topic,shipping,The customer asks about shipping.
+2026-11-13T14:26:20Z,5715bd6fa4161293c4c2e2e3444ea7c8,b83cfe0be037e5ed,Groundedness,pass,Every claim in the answer is supported by the retrieved policy text.
+2026-11-13T14:26:20Z,5715bd6fa4161293c4c2e2e3444ea7c8,b83cfe0be037e5ed,Answered the question,pass,The answer addresses the customer's question directly.
+2026-11-13T14:26:20Z,5715bd6fa4161293c4c2e2e3444ea7c8,b83cfe0be037e5ed,Topic,account,The customer asks about account.
+2026-11-13T14:28:20Z,81f76d1c2dbc2134c30ff46e8026695f,32ebd6899be578c7,Groundedness,pass,Every claim in the answer is supported by the retrieved policy text.
+2026-11-13T14:28:20Z,81f76d1c2dbc2134c30ff46e8026695f,32ebd6899be578c7,Answered the question,pass,The answer addresses the customer's question directly.
+2026-11-13T14:28:20Z,81f76d1c2dbc2134c30ff46e8026695f,32ebd6899be578c7,Topic,account,The customer asks about account.
+2026-11-13T14:30:20Z,f4188f3f8a14be62295b4715c333e861,1ca35cfb04fc6d82,Groundedness,pass,Every claim in the answer is supported by the retrieved policy text.
+2026-11-13T14:30:20Z,f4188f3f8a14be62295b4715c333e861,1ca35cfb04fc6d82,Answered the question,pass,The answer addresses the customer's question directly.
+2026-11-13T14:30:20Z,f4188f3f8a14be62295b4715c333e861,1ca35cfb04fc6d82,Topic,account,The customer asks about account.
+2026-11-13T14:32:20Z,ce88cb2dd4e80839fc3e058be0f3eab0,bb5e4bcf15ed6269,Groundedness,pass,Every claim in the answer is supported by the retrieved policy text.
+2026-11-13T14:32:20Z,ce88cb2dd4e80839fc3e058be0f3eab0,bb5e4bcf15ed6269,Answered the question,pass,The answer addresses the customer's question directly.
+2026-11-13T14:32:20Z,ce88cb2dd4e80839fc3e058be0f3eab0,bb5e4bcf15ed6269,Topic,account,The customer asks about account.
+2026-11-13T14:40:20Z,885f6e66c2b6d2c5fa5d310011b7e948,8715a10343dac043,Groundedness,fail,"The answer claims a 30-day refund window, but the policy allows refunds within 14 days only."
+2026-11-13T14:40:20Z,885f6e66c2b6d2c5fa5d310011b7e948,8715a10343dac043,Answered the question,pass,The answer addresses the customer's question directly.
+2026-11-13T14:40:20Z,885f6e66c2b6d2c5fa5d310011b7e948,8715a10343dac043,Topic,billing,The customer asks about billing.
+2026-11-13T14:42:20Z,edcd465e36386821f6e07cc06c52c49f,abf3ad39fec21bbe,Groundedness,fail,"The answer claims a 30-day refund window, but the policy allows refunds within 14 days only."
+2026-11-13T14:42:20Z,edcd465e36386821f6e07cc06c52c49f,abf3ad39fec21bbe,Answered the question,pass,The answer addresses the customer's question directly.
+2026-11-13T14:42:20Z,edcd465e36386821f6e07cc06c52c49f,abf3ad39fec21bbe,Topic,billing,The customer asks about billing.
+2026-11-13T14:44:20Z,7394988f847fd9b4e64d1bcb702753a1,96a402f23ae8cc93,Groundedness,fail,"The answer claims a 30-day refund window, but the policy allows refunds within 14 days only."
+2026-11-13T14:44:20Z,7394988f847fd9b4e64d1bcb702753a1,96a402f23ae8cc93,Answered the question,pass,The answer addresses the customer's question directly.
+2026-11-13T14:44:20Z,7394988f847fd9b4e64d1bcb702753a1,96a402f23ae8cc93,Topic,billing,The customer asks about billing.
+2026-11-13T14:46:20Z,0f1259e0a18ff6b6b535106e122c9a56,474a493b3ceddf2d,Groundedness,fail,"The answer claims a 30-day refund window, but the policy allows refunds within 14 days only."
+2026-11-13T14:46:20Z,0f1259e0a18ff6b6b535106e122c9a56,474a493b3ceddf2d,Answered the question,pass,The answer addresses the customer's question directly.
+2026-11-13T14:46:20Z,0f1259e0a18ff6b6b535106e122c9a56,474a493b3ceddf2d,Topic,billing,The customer asks about billing.
+2026-11-13T14:48:20Z,b92da22b21df306f8a0b3c3336d8393a,683514f2ceb81f9d,Groundedness,fail,"The answer claims a 30-day refund window, but the policy allows refunds within 14 days only."
+2026-11-13T14:48:20Z,b92da22b21df306f8a0b3c3336d8393a,683514f2ceb81f9d,Answered the question,pass,The answer addresses the customer's question directly.
+2026-11-13T14:48:20Z,b92da22b21df306f8a0b3c3336d8393a,683514f2ceb81f9d,Topic,billing,The customer asks about billing.
+2026-11-13T14:50:20Z,5ab33edf6e595ed3a8b317fa18d0752b,a56c0941fbf24050,Groundedness,fail,"The answer claims a 30-day refund window, but the policy allows refunds within 14 days only."
+2026-11-13T14:50:20Z,5ab33edf6e595ed3a8b317fa18d0752b,a56c0941fbf24050,Answered the question,pass,The answer addresses the customer's question directly.
+2026-11-13T14:50:20Z,5ab33edf6e595ed3a8b317fa18d0752b,a56c0941fbf24050,Topic,billing,The customer asks about billing.
+2026-11-13T14:52:20Z,ccf3a17156dc8907ba6c34ab6712303a,2ef912766c006f61,Groundedness,fail,"The answer claims a 30-day refund window, but the policy allows refunds within 14 days only."
+2026-11-13T14:52:20Z,ccf3a17156dc8907ba6c34ab6712303a,2ef912766c006f61,Answered the question,pass,The answer addresses the customer's question directly.
+2026-11-13T14:52:20Z,ccf3a17156dc8907ba6c34ab6712303a,2ef912766c006f61,Topic,billing,The customer asks about billing.
+2026-11-13T14:54:20Z,134c6c92ec5b227cdfde4fbf3ff350bf,8a63f881ffd0f9d5,Groundedness,fail,"The answer claims a 30-day refund window, but the policy allows refunds within 14 days only."
+2026-11-13T14:54:20Z,134c6c92ec5b227cdfde4fbf3ff350bf,8a63f881ffd0f9d5,Answered the question,pass,The answer addresses the customer's question directly.
+2026-11-13T14:54:20Z,134c6c92ec5b227cdfde4fbf3ff350bf,8a63f881ffd0f9d5,Topic,billing,The customer asks about billing.
+2026-11-13T14:56:20Z,c0e9ab30ed2662e917e011b7f8102383,e7067ef466aa9385,Groundedness,fail,"The answer claims a 30-day refund window, but the policy allows refunds within 14 days only."
+2026-11-13T14:56:20Z,c0e9ab30ed2662e917e011b7f8102383,e7067ef466aa9385,Answered the question,pass,The answer addresses the customer's question directly.
+2026-11-13T14:56:20Z,c0e9ab30ed2662e917e011b7f8102383,e7067ef466aa9385,Topic,billing,The customer asks about billing.
+2026-11-13T14:58:20Z,63f2ae24fc3d3348008d4127610461e3,bb026576f512c4c3,Groundedness,fail,"The answer claims a 30-day refund window, but the policy allows refunds within 14 days only."
+2026-11-13T14:58:20Z,63f2ae24fc3d3348008d4127610461e3,bb026576f512c4c3,Answered the question,pass,The answer addresses the customer's question directly.
+2026-11-13T14:58:20Z,63f2ae24fc3d3348008d4127610461e3,bb026576f512c4c3,Topic,billing,The customer asks about billing.
+2026-11-13T15:00:20Z,7c967f79b7e99acaa97065e18e46d534,0f9aea4b8acd4e10,Groundedness,pass,Every claim in the answer is supported by the retrieved policy text.
+2026-11-13T15:00:20Z,7c967f79b7e99acaa97065e18e46d534,0f9aea4b8acd4e10,Answered the question,pass,The answer addresses the customer's question directly.
+2026-11-13T15:00:20Z,7c967f79b7e99acaa97065e18e46d534,0f9aea4b8acd4e10,Topic,shipping,The customer asks about shipping.
+2026-11-13T15:02:20Z,7a0ecfea958ca9ba0cd620c20ea2622b,d9f195d014822f53,Groundedness,pass,Every claim in the answer is supported by the retrieved policy text.
+2026-11-13T15:02:20Z,7a0ecfea958ca9ba0cd620c20ea2622b,d9f195d014822f53,Answered the question,pass,The answer addresses the customer's question directly.
+2026-11-13T15:02:20Z,7a0ecfea958ca9ba0cd620c20ea2622b,d9f195d014822f53,Topic,shipping,The customer asks about shipping.
+2026-11-13T15:04:20Z,dca02eecacdabacc1165e21098543881,0a2c827e98326856,Groundedness,pass,Every claim in the answer is supported by the retrieved policy text.
+2026-11-13T15:04:20Z,dca02eecacdabacc1165e21098543881,0a2c827e98326856,Answered the question,pass,The answer addresses the customer's question directly.
+2026-11-13T15:04:20Z,dca02eecacdabacc1165e21098543881,0a2c827e98326856,Topic,shipping,The customer asks about shipping.
+2026-11-13T15:06:20Z,90b2b633956b8c0ca8499b926b5252e3,43ff50113d1a85dd,Groundedness,pass,Every claim in the answer is supported by the retrieved policy text.
+2026-11-13T15:06:20Z,90b2b633956b8c0ca8499b926b5252e3,43ff50113d1a85dd,Answered the question,pass,The answer addresses the customer's question directly.
+2026-11-13T15:06:20Z,90b2b633956b8c0ca8499b926b5252e3,43ff50113d1a85dd,Topic,account,The customer asks about account.
+2026-11-13T15:08:20Z,750cab754ccc9bc2a53f8a28abf3e3fc,902059e4ff9ab5c2,Groundedness,pass,Every claim in the answer is supported by the retrieved policy text.
+2026-11-13T15:08:20Z,750cab754ccc9bc2a53f8a28abf3e3fc,902059e4ff9ab5c2,Answered the question,pass,The answer addresses the customer's question directly.
+2026-11-13T15:08:20Z,750cab754ccc9bc2a53f8a28abf3e3fc,902059e4ff9ab5c2,Topic,account,The customer asks about account.
+2026-11-13T15:10:20Z,8181a8cc369147eb89a2688b12c136e0,48f4ef125e9953d2,Groundedness,pass,Every claim in the answer is supported by the retrieved policy text.
+2026-11-13T15:10:20Z,8181a8cc369147eb89a2688b12c136e0,48f4ef125e9953d2,Answered the question,pass,The answer addresses the customer's question directly.
+2026-11-13T15:10:20Z,8181a8cc369147eb89a2688b12c136e0,48f4ef125e9953d2,Topic,account,The customer asks about account.
+2026-11-13T15:12:20Z,4d71c366b41b31438b10550cd5704f32,8dfa6a56d12dbc9a,Groundedness,pass,Every claim in the answer is supported by the retrieved policy text.
+2026-11-13T15:12:20Z,4d71c366b41b31438b10550cd5704f32,8dfa6a56d12dbc9a,Answered the question,pass,The answer addresses the customer's question directly.
+2026-11-13T15:12:20Z,4d71c366b41b31438b10550cd5704f32,8dfa6a56d12dbc9a,Topic,account,The customer asks about account.
+2026-11-13T15:20:20Z,e0ccedc5f05db76e1a84a51aa9d3d7c7,48212ddb45b89cd9,Groundedness,fail,"The answer claims a 30-day refund window, but the policy allows refunds within 14 days only."
+2026-11-13T15:20:20Z,e0ccedc5f05db76e1a84a51aa9d3d7c7,48212ddb45b89cd9,Answered the question,pass,The answer addresses the customer's question directly.
+2026-11-13T15:20:20Z,e0ccedc5f05db76e1a84a51aa9d3d7c7,48212ddb45b89cd9,Topic,billing,The customer asks about billing.
+2026-11-13T15:22:20Z,afffcfd2341ef40b57c700aab7b56ea7,0d01280fd89a40c0,Groundedness,fail,"The answer claims a 30-day refund window, but the policy allows refunds within 14 days only."
+2026-11-13T15:22:20Z,afffcfd2341ef40b57c700aab7b56ea7,0d01280fd89a40c0,Answered the question,pass,The answer addresses the customer's question directly.
+2026-11-13T15:22:20Z,afffcfd2341ef40b57c700aab7b56ea7,0d01280fd89a40c0,Topic,billing,The customer asks about billing.
+2026-11-13T15:24:20Z,0b49452d46d483f3d450281c6c6f7633,711c21c9bdc14f1f,Groundedness,fail,"The answer claims a 30-day refund window, but the policy allows refunds within 14 days only."
+2026-11-13T15:24:20Z,0b49452d46d483f3d450281c6c6f7633,711c21c9bdc14f1f,Answered the question,pass,The answer addresses the customer's question directly.
+2026-11-13T15:24:20Z,0b49452d46d483f3d450281c6c6f7633,711c21c9bdc14f1f,Topic,billing,The customer asks about billing.
+2026-11-13T15:26:20Z,1ca3c4480279b6a68f9797b06d7ce3c9,5e84f058d5a804eb,Groundedness,fail,"The answer claims a 30-day refund window, but the policy allows refunds within 14 days only."
+2026-11-13T15:26:20Z,1ca3c4480279b6a68f9797b06d7ce3c9,5e84f058d5a804eb,Answered the question,pass,The answer addresses the customer's question directly.
+2026-11-13T15:26:20Z,1ca3c4480279b6a68f9797b06d7ce3c9,5e84f058d5a804eb,Topic,billing,The customer asks about billing.
+2026-11-13T15:28:20Z,0ab54bde20a045026e06809725e97977,5b9962c6e61fecc0,Groundedness,fail,"The answer claims a 30-day refund window, but the policy allows refunds within 14 days only."
+2026-11-13T15:28:20Z,0ab54bde20a045026e06809725e97977,5b9962c6e61fecc0,Answered the question,pass,The answer addresses the customer's question directly.
+2026-11-13T15:28:20Z,0ab54bde20a045026e06809725e97977,5b9962c6e61fecc0,Topic,billing,The customer asks about billing.
+2026-11-13T15:30:20Z,5a8aaeca1a50aec3aabc25fa3fe12e47,ecfedb992790cebd,Groundedness,fail,"The answer claims a 30-day refund window, but the policy allows refunds within 14 days only."
+2026-11-13T15:30:20Z,5a8aaeca1a50aec3aabc25fa3fe12e47,ecfedb992790cebd,Answered the question,pass,The answer addresses the customer's question directly.
+2026-11-13T15:30:20Z,5a8aaeca1a50aec3aabc25fa3fe12e47,ecfedb992790cebd,Topic,billing,The customer asks about billing.
+2026-11-13T15:32:20Z,ccc56569f9e8a3692999b735dd56cc94,c84a7b28550a1b46,Groundedness,fail,"The answer claims a 30-day refund window, but the policy allows refunds within 14 days only."
+2026-11-13T15:32:20Z,ccc56569f9e8a3692999b735dd56cc94,c84a7b28550a1b46,Answered the question,pass,The answer addresses the customer's question directly.
+2026-11-13T15:32:20Z,ccc56569f9e8a3692999b735dd56cc94,c84a7b28550a1b46,Topic,billing,The customer asks about billing.
+2026-11-13T15:34:20Z,bc2cbb0ddd334cc7ab7f089acd5f4822,09e9db0adf465290,Groundedness,fail,"The answer claims a 30-day refund window, but the policy allows refunds within 14 days only."
+2026-11-13T15:34:20Z,bc2cbb0ddd334cc7ab7f089acd5f4822,09e9db0adf465290,Answered the question,pass,The answer addresses the customer's question directly.
+2026-11-13T15:34:20Z,bc2cbb0ddd334cc7ab7f089acd5f4822,09e9db0adf465290,Topic,billing,The customer asks about billing.
+2026-11-13T15:36:20Z,eb1fa9f2d10bd1d03317347038f16a81,a8f7ef5a060edf5b,Groundedness,fail,"The answer claims a 30-day refund window, but the policy allows refunds within 14 days only."
+2026-11-13T15:36:20Z,eb1fa9f2d10bd1d03317347038f16a81,a8f7ef5a060edf5b,Answered the question,pass,The answer addresses the customer's question directly.
+2026-11-13T15:36:20Z,eb1fa9f2d10bd1d03317347038f16a81,a8f7ef5a060edf5b,Topic,billing,The customer asks about billing.
+2026-11-13T15:38:20Z,11c58ef0dd463c09475287aa5408f9ac,d7fa2d8dfb2ca025,Groundedness,fail,"The answer claims a 30-day refund window, but the policy allows refunds within 14 days only."
+2026-11-13T15:38:20Z,11c58ef0dd463c09475287aa5408f9ac,d7fa2d8dfb2ca025,Answered the question,pass,The answer addresses the customer's question directly.
+2026-11-13T15:38:20Z,11c58ef0dd463c09475287aa5408f9ac,d7fa2d8dfb2ca025,Topic,billing,The customer asks about billing.
+2026-11-13T15:40:20Z,e08596db1d8709660710d430f071d879,98b8e4cc1bc044fc,Groundedness,pass,Every claim in the answer is supported by the retrieved policy text.
+2026-11-13T15:40:20Z,e08596db1d8709660710d430f071d879,98b8e4cc1bc044fc,Answered the question,pass,The answer addresses the customer's question directly.
+2026-11-13T15:40:20Z,e08596db1d8709660710d430f071d879,98b8e4cc1bc044fc,Topic,shipping,The customer asks about shipping.
+2026-11-13T15:42:20Z,6fb78271504d281fc9535b63ba81edd9,0b5cea6a41357e8c,Groundedness,pass,Every claim in the answer is supported by the retrieved policy text.
+2026-11-13T15:42:20Z,6fb78271504d281fc9535b63ba81edd9,0b5cea6a41357e8c,Answered the question,pass,The answer addresses the customer's question directly.
+2026-11-13T15:42:20Z,6fb78271504d281fc9535b63ba81edd9,0b5cea6a41357e8c,Topic,shipping,The customer asks about shipping.
+2026-11-13T15:44:20Z,ce777f00ecf27e7685197ff4006ed6e3,6e6981a35d3d9e56,Groundedness,pass,Every claim in the answer is supported by the retrieved policy text.
+2026-11-13T15:44:20Z,ce777f00ecf27e7685197ff4006ed6e3,6e6981a35d3d9e56,Answered the question,pass,The answer addresses the customer's question directly.
+2026-11-13T15:44:20Z,ce777f00ecf27e7685197ff4006ed6e3,6e6981a35d3d9e56,Topic,shipping,The customer asks about shipping.
+2026-11-13T15:46:20Z,9f871ce75487fd4febb7a385aa0b7b14,aab97e494f2d4796,Groundedness,pass,Every claim in the answer is supported by the retrieved policy text.
+2026-11-13T15:46:20Z,9f871ce75487fd4febb7a385aa0b7b14,aab97e494f2d4796,Answered the question,pass,The answer addresses the customer's question directly.
+2026-11-13T15:46:20Z,9f871ce75487fd4febb7a385aa0b7b14,aab97e494f2d4796,Topic,account,The customer asks about account.
+2026-11-13T15:48:20Z,8dedf9fb4bb00f20b27c40266703b636,2c8d0e44e71e43a6,Groundedness,pass,Every claim in the answer is supported by the retrieved policy text.
+2026-11-13T15:48:20Z,8dedf9fb4bb00f20b27c40266703b636,2c8d0e44e71e43a6,Answered the question,pass,The answer addresses the customer's question directly.
+2026-11-13T15:48:20Z,8dedf9fb4bb00f20b27c40266703b636,2c8d0e44e71e43a6,Topic,account,The customer asks about account.
+2026-11-13T15:50:20Z,d56f03508c459ce267f48ad54d0b0d1a,527eecfaa79ac9aa,Groundedness,pass,Every claim in the answer is supported by the retrieved policy text.
+2026-11-13T15:50:20Z,d56f03508c459ce267f48ad54d0b0d1a,527eecfaa79ac9aa,Answered the question,pass,The answer addresses the customer's question directly.
+2026-11-13T15:50:20Z,d56f03508c459ce267f48ad54d0b0d1a,527eecfaa79ac9aa,Topic,account,The customer asks about account.
+2026-11-13T15:52:20Z,82dc4c8e36b5229aacf5e81e71316269,48a639d015b52908,Groundedness,pass,Every claim in the answer is supported by the retrieved policy text.
+2026-11-13T15:52:20Z,82dc4c8e36b5229aacf5e81e71316269,48a639d015b52908,Answered the question,pass,The answer addresses the customer's question directly.
+2026-11-13T15:52:20Z,82dc4c8e36b5229aacf5e81e71316269,48a639d015b52908,Topic,account,The customer asks about account.
+2026-11-14T12:00:20Z,17e8392a55cee5db9e87e04ca2086977,25b8fd4b32fa2de8,Groundedness,pass,Every claim in the answer is supported by the retrieved policy text.
+2026-11-14T12:00:20Z,17e8392a55cee5db9e87e04ca2086977,25b8fd4b32fa2de8,Answered the question,pass,The answer addresses the customer's question directly.
+2026-11-14T12:00:20Z,17e8392a55cee5db9e87e04ca2086977,25b8fd4b32fa2de8,Topic,billing,The customer asks about billing.
+2026-11-14T12:02:20Z,9c7c737779a28903fbe33b243eae0032,b7e5848131c681ec,Groundedness,pass,Every claim in the answer is supported by the retrieved policy text.
+2026-11-14T12:02:20Z,9c7c737779a28903fbe33b243eae0032,b7e5848131c681ec,Answered the question,pass,The answer addresses the customer's question directly.
+2026-11-14T12:02:20Z,9c7c737779a28903fbe33b243eae0032,b7e5848131c681ec,Topic,billing,The customer asks about billing.
+2026-11-14T12:04:20Z,25c73c443e75c3b4664fa6637e8f8095,c7468f591b494e15,Groundedness,pass,Every claim in the answer is supported by the retrieved policy text.
+2026-11-14T12:04:20Z,25c73c443e75c3b4664fa6637e8f8095,c7468f591b494e15,Answered the question,pass,The answer addresses the customer's question directly.
+2026-11-14T12:04:20Z,25c73c443e75c3b4664fa6637e8f8095,c7468f591b494e15,Topic,billing,The customer asks about billing.
+2026-11-14T12:06:20Z,b227462cf53d4330cdda24ba2d06e8cf,222282e174daaebf,Groundedness,pass,Every claim in the answer is supported by the retrieved policy text.
+2026-11-14T12:06:20Z,b227462cf53d4330cdda24ba2d06e8cf,222282e174daaebf,Answered the question,pass,The answer addresses the customer's question directly.
+2026-11-14T12:06:20Z,b227462cf53d4330cdda24ba2d06e8cf,222282e174daaebf,Topic,billing,The customer asks about billing.
+2026-11-14T12:08:20Z,8f15ba58fce6850487f8424daae65fc1,e45b712eb8225688,Groundedness,pass,Every claim in the answer is supported by the retrieved policy text.
+2026-11-14T12:08:20Z,8f15ba58fce6850487f8424daae65fc1,e45b712eb8225688,Answered the question,pass,The answer addresses the customer's question directly.
+2026-11-14T12:08:20Z,8f15ba58fce6850487f8424daae65fc1,e45b712eb8225688,Topic,billing,The customer asks about billing.
+2026-11-14T12:10:20Z,722764e68c41561be827a1b9d4a02e53,d701410d3f4b1a70,Groundedness,pass,Every claim in the answer is supported by the retrieved policy text.
+2026-11-14T12:10:20Z,722764e68c41561be827a1b9d4a02e53,d701410d3f4b1a70,Answered the question,pass,The answer addresses the customer's question directly.
+2026-11-14T12:10:20Z,722764e68c41561be827a1b9d4a02e53,d701410d3f4b1a70,Topic,billing,The customer asks about billing.
+2026-11-14T12:12:20Z,7c0e8cd88573e793c715b2b9c40c5d91,55fa1ab8458f1f19,Groundedness,pass,Every claim in the answer is supported by the retrieved policy text.
+2026-11-14T12:12:20Z,7c0e8cd88573e793c715b2b9c40c5d91,55fa1ab8458f1f19,Answered the question,pass,The answer addresses the customer's question directly.
+2026-11-14T12:12:20Z,7c0e8cd88573e793c715b2b9c40c5d91,55fa1ab8458f1f19,Topic,billing,The customer asks about billing.
+2026-11-14T12:14:20Z,269cd696236c7b8714a0bccb8a476a87,54b4a48268586eba,Groundedness,pass,Every claim in the answer is supported by the retrieved policy text.
+2026-11-14T12:14:20Z,269cd696236c7b8714a0bccb8a476a87,54b4a48268586eba,Answered the question,pass,The answer addresses the customer's question directly.
+2026-11-14T12:14:20Z,269cd696236c7b8714a0bccb8a476a87,54b4a48268586eba,Topic,billing,The customer asks about billing.
+2026-11-14T12:16:20Z,d5385b0e34f3193c0ff0a55c6a702e2f,e172b725db52ca58,Groundedness,pass,Every claim in the answer is supported by the retrieved policy text.
+2026-11-14T12:16:20Z,d5385b0e34f3193c0ff0a55c6a702e2f,e172b725db52ca58,Answered the question,pass,The answer addresses the customer's question directly.
+2026-11-14T12:16:20Z,d5385b0e34f3193c0ff0a55c6a702e2f,e172b725db52ca58,Topic,billing,The customer asks about billing.
+2026-11-14T12:18:20Z,f1578470018267c47a1b58066160a6b4,89c8d2ab6b44fa8d,Groundedness,pass,Every claim in the answer is supported by the retrieved policy text.
+2026-11-14T12:18:20Z,f1578470018267c47a1b58066160a6b4,89c8d2ab6b44fa8d,Answered the question,pass,The answer addresses the customer's question directly.
+2026-11-14T12:18:20Z,f1578470018267c47a1b58066160a6b4,89c8d2ab6b44fa8d,Topic,billing,The customer asks about billing.
+2026-11-14T12:20:20Z,e5d6f6e69a6ec2f5ccc429038bcf53a1,ab3b4d37560c95ee,Groundedness,pass,Every claim in the answer is supported by the retrieved policy text.
+2026-11-14T12:20:20Z,e5d6f6e69a6ec2f5ccc429038bcf53a1,ab3b4d37560c95ee,Answered the question,pass,The answer addresses the customer's question directly.
+2026-11-14T12:20:20Z,e5d6f6e69a6ec2f5ccc429038bcf53a1,ab3b4d37560c95ee,Topic,shipping,The customer asks about shipping.
+2026-11-14T12:22:20Z,d72b61082a405f12b963f37f67814c1f,978648f864de82e6,Groundedness,pass,Every claim in the answer is supported by the retrieved policy text.
+2026-11-14T12:22:20Z,d72b61082a405f12b963f37f67814c1f,978648f864de82e6,Answered the question,pass,The answer addresses the customer's question directly.
+2026-11-14T12:22:20Z,d72b61082a405f12b963f37f67814c1f,978648f864de82e6,Topic,shipping,The customer asks about shipping.
+2026-11-14T12:24:20Z,6db99102a48b3dbe157d94a106f028ff,74672cd9362f5e5c,Groundedness,pass,Every claim in the answer is supported by the retrieved policy text.
+2026-11-14T12:24:20Z,6db99102a48b3dbe157d94a106f028ff,74672cd9362f5e5c,Answered the question,pass,The answer addresses the customer's question directly.
+2026-11-14T12:24:20Z,6db99102a48b3dbe157d94a106f028ff,74672cd9362f5e5c,Topic,shipping,The customer asks about shipping.
+2026-11-14T12:26:20Z,473bd358610e6a64e1301617c2dff335,bfc00dc804f64d86,Groundedness,pass,Every claim in the answer is supported by the retrieved policy text.
+2026-11-14T12:26:20Z,473bd358610e6a64e1301617c2dff335,bfc00dc804f64d86,Answered the question,pass,The answer addresses the customer's question directly.
+2026-11-14T12:26:20Z,473bd358610e6a64e1301617c2dff335,bfc00dc804f64d86,Topic,account,The customer asks about account.
+2026-11-14T12:28:20Z,39669fa759970043f3b1025bfff9f585,3f4df561f319c125,Groundedness,pass,Every claim in the answer is supported by the retrieved policy text.
+2026-11-14T12:28:20Z,39669fa759970043f3b1025bfff9f585,3f4df561f319c125,Answered the question,pass,The answer addresses the customer's question directly.
+2026-11-14T12:28:20Z,39669fa759970043f3b1025bfff9f585,3f4df561f319c125,Topic,account,The customer asks about account.
+2026-11-14T12:30:20Z,3d1148022702878b9f0fda8d05379ff6,41992fdfb31022f0,Groundedness,pass,Every claim in the answer is supported by the retrieved policy text.
+2026-11-14T12:30:20Z,3d1148022702878b9f0fda8d05379ff6,41992fdfb31022f0,Answered the question,pass,The answer addresses the customer's question directly.
+2026-11-14T12:30:20Z,3d1148022702878b9f0fda8d05379ff6,41992fdfb31022f0,Topic,account,The customer asks about account.
+2026-11-14T12:32:20Z,f6b751f79b7492459b1bc8952af43ab7,9424aed51bac5c15,Groundedness,pass,Every claim in the answer is supported by the retrieved policy text.
+2026-11-14T12:32:20Z,f6b751f79b7492459b1bc8952af43ab7,9424aed51bac5c15,Answered the question,pass,The answer addresses the customer's question directly.
+2026-11-14T12:32:20Z,f6b751f79b7492459b1bc8952af43ab7,9424aed51bac5c15,Topic,account,The customer asks about account.
+2026-11-14T12:40:20Z,e87466d7ad66a1bd93676a024fdc6e1b,d4a057a7b0cc1b3b,Groundedness,pass,Every claim in the answer is supported by the retrieved policy text.
+2026-11-14T12:40:20Z,e87466d7ad66a1bd93676a024fdc6e1b,d4a057a7b0cc1b3b,Answered the question,pass,The answer addresses the customer's question directly.
+2026-11-14T12:40:20Z,e87466d7ad66a1bd93676a024fdc6e1b,d4a057a7b0cc1b3b,Topic,billing,The customer asks about billing.
+2026-11-14T12:42:20Z,4d3485c5c5c14eb4b27b3d901a16342c,0a8381bec85aca46,Groundedness,pass,Every claim in the answer is supported by the retrieved policy text.
+2026-11-14T12:42:20Z,4d3485c5c5c14eb4b27b3d901a16342c,0a8381bec85aca46,Answered the question,pass,The answer addresses the customer's question directly.
+2026-11-14T12:42:20Z,4d3485c5c5c14eb4b27b3d901a16342c,0a8381bec85aca46,Topic,billing,The customer asks about billing.
+2026-11-14T12:44:20Z,11a726095eddbbbfa95976636daa2e68,6efb63b11b049863,Groundedness,pass,Every claim in the answer is supported by the retrieved policy text.
+2026-11-14T12:44:20Z,11a726095eddbbbfa95976636daa2e68,6efb63b11b049863,Answered the question,pass,The answer addresses the customer's question directly.
+2026-11-14T12:44:20Z,11a726095eddbbbfa95976636daa2e68,6efb63b11b049863,Topic,billing,The customer asks about billing.
+2026-11-14T12:46:20Z,75b17a55d4262982e43e4288a2b5b498,9dac6e8345241ea6,Groundedness,pass,Every claim in the answer is supported by the retrieved policy text.
+2026-11-14T12:46:20Z,75b17a55d4262982e43e4288a2b5b498,9dac6e8345241ea6,Answered the question,pass,The answer addresses the customer's question directly.
+2026-11-14T12:46:20Z,75b17a55d4262982e43e4288a2b5b498,9dac6e8345241ea6,Topic,billing,The customer asks about billing.
+2026-11-14T12:48:20Z,7701f7bb7bc67e1fc64ee6e389c5b31a,ef43613cd4aac9a3,Groundedness,pass,Every claim in the answer is supported by the retrieved policy text.
+2026-11-14T12:48:20Z,7701f7bb7bc67e1fc64ee6e389c5b31a,ef43613cd4aac9a3,Answered the question,pass,The answer addresses the customer's question directly.
+2026-11-14T12:48:20Z,7701f7bb7bc67e1fc64ee6e389c5b31a,ef43613cd4aac9a3,Topic,billing,The customer asks about billing.
+2026-11-14T12:50:20Z,c01f36bf3e6dd58b7367c28de1b294de,533420e6d9d80b8d,Groundedness,pass,Every claim in the answer is supported by the retrieved policy text.
+2026-11-14T12:50:20Z,c01f36bf3e6dd58b7367c28de1b294de,533420e6d9d80b8d,Answered the question,pass,The answer addresses the customer's question directly.
+2026-11-14T12:50:20Z,c01f36bf3e6dd58b7367c28de1b294de,533420e6d9d80b8d,Topic,billing,The customer asks about billing.
+2026-11-14T12:52:20Z,4223623bcc3ebdde5ad5cf06364d7c87,8441aefd0299436a,Groundedness,pass,Every claim in the answer is supported by the retrieved policy text.
+2026-11-14T12:52:20Z,4223623bcc3ebdde5ad5cf06364d7c87,8441aefd0299436a,Answered the question,pass,The answer addresses the customer's question directly.
+2026-11-14T12:52:20Z,4223623bcc3ebdde5ad5cf06364d7c87,8441aefd0299436a,Topic,billing,The customer asks about billing.
+2026-11-14T12:54:20Z,680bac63b856d0353dc9829015eabb27,72bb912d7da67785,Groundedness,pass,Every claim in the answer is supported by the retrieved policy text.
+2026-11-14T12:54:20Z,680bac63b856d0353dc9829015eabb27,72bb912d7da67785,Answered the question,pass,The answer addresses the customer's question directly.
+2026-11-14T12:54:20Z,680bac63b856d0353dc9829015eabb27,72bb912d7da67785,Topic,billing,The customer asks about billing.
+2026-11-14T12:56:20Z,6786d50638ba8abc4b5305e517d2582e,58007c0287ea7ff5,Groundedness,pass,Every claim in the answer is supported by the retrieved policy text.
+2026-11-14T12:56:20Z,6786d50638ba8abc4b5305e517d2582e,58007c0287ea7ff5,Answered the question,pass,The answer addresses the customer's question directly.
+2026-11-14T12:56:20Z,6786d50638ba8abc4b5305e517d2582e,58007c0287ea7ff5,Topic,billing,The customer asks about billing.
+2026-11-14T12:58:20Z,5a10412954aebd1b8ce6424dbef59fe6,50c7c006314d3441,Groundedness,pass,Every claim in the answer is supported by the retrieved policy text.
+2026-11-14T12:58:20Z,5a10412954aebd1b8ce6424dbef59fe6,50c7c006314d3441,Answered the question,pass,The answer addresses the customer's question directly.
+2026-11-14T12:58:20Z,5a10412954aebd1b8ce6424dbef59fe6,50c7c006314d3441,Topic,billing,The customer asks about billing.
+2026-11-14T13:00:20Z,b0ae8f08c31edbbcf36cb62b892e6161,c29cfc0cfa02eaec,Groundedness,pass,Every claim in the answer is supported by the retrieved policy text.
+2026-11-14T13:00:20Z,b0ae8f08c31edbbcf36cb62b892e6161,c29cfc0cfa02eaec,Answered the question,pass,The answer addresses the customer's question directly.
+2026-11-14T13:00:20Z,b0ae8f08c31edbbcf36cb62b892e6161,c29cfc0cfa02eaec,Topic,shipping,The customer asks about shipping.
+2026-11-14T13:02:20Z,d52721e719bc143efb02bebb48729a4d,2067bdac88bd13d1,Groundedness,pass,Every claim in the answer is supported by the retrieved policy text.
+2026-11-14T13:02:20Z,d52721e719bc143efb02bebb48729a4d,2067bdac88bd13d1,Answered the question,pass,The answer addresses the customer's question directly.
+2026-11-14T13:02:20Z,d52721e719bc143efb02bebb48729a4d,2067bdac88bd13d1,Topic,shipping,The customer asks about shipping.
+2026-11-14T13:04:20Z,4ac9778d8da8eee40df56ac6f96b648a,0323d342df6a8f93,Groundedness,pass,Every claim in the answer is supported by the retrieved policy text.
+2026-11-14T13:04:20Z,4ac9778d8da8eee40df56ac6f96b648a,0323d342df6a8f93,Answered the question,pass,The answer addresses the customer's question directly.
+2026-11-14T13:04:20Z,4ac9778d8da8eee40df56ac6f96b648a,0323d342df6a8f93,Topic,shipping,The customer asks about shipping.
+2026-11-14T13:06:20Z,5738811d70c2903f7a8d03aa782a65e0,10ba58e3d2762bdc,Groundedness,pass,Every claim in the answer is supported by the retrieved policy text.
+2026-11-14T13:06:20Z,5738811d70c2903f7a8d03aa782a65e0,10ba58e3d2762bdc,Answered the question,pass,The answer addresses the customer's question directly.
+2026-11-14T13:06:20Z,5738811d70c2903f7a8d03aa782a65e0,10ba58e3d2762bdc,Topic,account,The customer asks about account.
+2026-11-14T13:08:20Z,afbb411aa1235a8c93b7a88612f70c97,3f897142fe716b14,Groundedness,pass,Every claim in the answer is supported by the retrieved policy text.
+2026-11-14T13:08:20Z,afbb411aa1235a8c93b7a88612f70c97,3f897142fe716b14,Answered the question,pass,The answer addresses the customer's question directly.
+2026-11-14T13:08:20Z,afbb411aa1235a8c93b7a88612f70c97,3f897142fe716b14,Topic,account,The customer asks about account.
+2026-11-14T13:10:20Z,989bc4da9b37a22b6a8a616fc3b290d0,4c1f55ab715629ee,Groundedness,pass,Every claim in the answer is supported by the retrieved policy text.
+2026-11-14T13:10:20Z,989bc4da9b37a22b6a8a616fc3b290d0,4c1f55ab715629ee,Answered the question,pass,The answer addresses the customer's question directly.
+2026-11-14T13:10:20Z,989bc4da9b37a22b6a8a616fc3b290d0,4c1f55ab715629ee,Topic,account,The customer asks about account.
+2026-11-14T13:12:20Z,9191b3634e2d66456dc7cac7fd72b050,a021c0ca3531968d,Groundedness,pass,Every claim in the answer is supported by the retrieved policy text.
+2026-11-14T13:12:20Z,9191b3634e2d66456dc7cac7fd72b050,a021c0ca3531968d,Answered the question,pass,The answer addresses the customer's question directly.
+2026-11-14T13:12:20Z,9191b3634e2d66456dc7cac7fd72b050,a021c0ca3531968d,Topic,account,The customer asks about account.
+2026-11-14T13:20:20Z,3d67cde92834e4c014c8b3b4a911d192,784c2f29980402a2,Groundedness,pass,Every claim in the answer is supported by the retrieved policy text.
+2026-11-14T13:20:20Z,3d67cde92834e4c014c8b3b4a911d192,784c2f29980402a2,Answered the question,pass,The answer addresses the customer's question directly.
+2026-11-14T13:20:20Z,3d67cde92834e4c014c8b3b4a911d192,784c2f29980402a2,Topic,billing,The customer asks about billing.
+2026-11-14T13:22:20Z,48603b32b4fb0eb949c13de73b4206c5,ca8f3653c9af18f8,Groundedness,pass,Every claim in the answer is supported by the retrieved policy text.
+2026-11-14T13:22:20Z,48603b32b4fb0eb949c13de73b4206c5,ca8f3653c9af18f8,Answered the question,pass,The answer addresses the customer's question directly.
+2026-11-14T13:22:20Z,48603b32b4fb0eb949c13de73b4206c5,ca8f3653c9af18f8,Topic,billing,The customer asks about billing.
+2026-11-14T13:24:20Z,32a447b2ef04e57dcdccc33aa9434aa0,246998e8d39e198b,Groundedness,pass,Every claim in the answer is supported by the retrieved policy text.
+2026-11-14T13:24:20Z,32a447b2ef04e57dcdccc33aa9434aa0,246998e8d39e198b,Answered the question,pass,The answer addresses the customer's question directly.
+2026-11-14T13:24:20Z,32a447b2ef04e57dcdccc33aa9434aa0,246998e8d39e198b,Topic,billing,The customer asks about billing.
+2026-11-14T13:26:20Z,9854ce4e4ebfa5c3cae9b4a72a79ea68,4dd8eb85b04d3376,Groundedness,pass,Every claim in the answer is supported by the retrieved policy text.
+2026-11-14T13:26:20Z,9854ce4e4ebfa5c3cae9b4a72a79ea68,4dd8eb85b04d3376,Answered the question,pass,The answer addresses the customer's question directly.
+2026-11-14T13:26:20Z,9854ce4e4ebfa5c3cae9b4a72a79ea68,4dd8eb85b04d3376,Topic,billing,The customer asks about billing.
+2026-11-14T13:28:20Z,8a3c3b5e801ef1da45b1ed25f1533ae8,9a8cfa3c5283aac7,Groundedness,pass,Every claim in the answer is supported by the retrieved policy text.
+2026-11-14T13:28:20Z,8a3c3b5e801ef1da45b1ed25f1533ae8,9a8cfa3c5283aac7,Answered the question,pass,The answer addresses the customer's question directly.
+2026-11-14T13:28:20Z,8a3c3b5e801ef1da45b1ed25f1533ae8,9a8cfa3c5283aac7,Topic,billing,The customer asks about billing.
+2026-11-14T13:30:20Z,ac9ed156f63fce413a9aca5e176132ed,d248a9a7ac1aa554,Groundedness,pass,Every claim in the answer is supported by the retrieved policy text.
+2026-11-14T13:30:20Z,ac9ed156f63fce413a9aca5e176132ed,d248a9a7ac1aa554,Answered the question,pass,The answer addresses the customer's question directly.
+2026-11-14T13:30:20Z,ac9ed156f63fce413a9aca5e176132ed,d248a9a7ac1aa554,Topic,billing,The customer asks about billing.
+2026-11-14T13:32:20Z,2cd94cbbc19ad58cc35b1c8c0a4c9f7f,6f96288295d82980,Groundedness,pass,Every claim in the answer is supported by the retrieved policy text.
+2026-11-14T13:32:20Z,2cd94cbbc19ad58cc35b1c8c0a4c9f7f,6f96288295d82980,Answered the question,pass,The answer addresses the customer's question directly.
+2026-11-14T13:32:20Z,2cd94cbbc19ad58cc35b1c8c0a4c9f7f,6f96288295d82980,Topic,billing,The customer asks about billing.
+2026-11-14T13:34:20Z,785299f4175ba98df81401027de1bdfe,6961929e546e035a,Groundedness,pass,Every claim in the answer is supported by the retrieved policy text.
+2026-11-14T13:34:20Z,785299f4175ba98df81401027de1bdfe,6961929e546e035a,Answered the question,pass,The answer addresses the customer's question directly.
+2026-11-14T13:34:20Z,785299f4175ba98df81401027de1bdfe,6961929e546e035a,Topic,billing,The customer asks about billing.
+2026-11-14T13:36:20Z,668409e3f1f8343ea99f131849c8a43f,1dad09b252c21221,Groundedness,pass,Every claim in the answer is supported by the retrieved policy text.
+2026-11-14T13:36:20Z,668409e3f1f8343ea99f131849c8a43f,1dad09b252c21221,Answered the question,pass,The answer addresses the customer's question directly.
+2026-11-14T13:36:20Z,668409e3f1f8343ea99f131849c8a43f,1dad09b252c21221,Topic,billing,The customer asks about billing.
+2026-11-14T13:38:20Z,d32e6dcd83bc9478dd6ac7b86778043b,84b871bb300568d2,Groundedness,pass,Every claim in the answer is supported by the retrieved policy text.
+2026-11-14T13:38:20Z,d32e6dcd83bc9478dd6ac7b86778043b,84b871bb300568d2,Answered the question,pass,The answer addresses the customer's question directly.
+2026-11-14T13:38:20Z,d32e6dcd83bc9478dd6ac7b86778043b,84b871bb300568d2,Topic,billing,The customer asks about billing.
+2026-11-14T13:40:20Z,71299889a01ac9927f9d3e64c1a6423b,e17f29e170286046,Groundedness,pass,Every claim in the answer is supported by the retrieved policy text.
+2026-11-14T13:40:20Z,71299889a01ac9927f9d3e64c1a6423b,e17f29e170286046,Answered the question,pass,The answer addresses the customer's question directly.
+2026-11-14T13:40:20Z,71299889a01ac9927f9d3e64c1a6423b,e17f29e170286046,Topic,shipping,The customer asks about shipping.
+2026-11-14T13:42:20Z,a14923c2f920264c0763fcd01f15c7b6,687213f98d605936,Groundedness,pass,Every claim in the answer is supported by the retrieved policy text.
+2026-11-14T13:42:20Z,a14923c2f920264c0763fcd01f15c7b6,687213f98d605936,Answered the question,pass,The answer addresses the customer's question directly.
+2026-11-14T13:42:20Z,a14923c2f920264c0763fcd01f15c7b6,687213f98d605936,Topic,shipping,The customer asks about shipping.
+2026-11-14T13:44:20Z,1d0bc9bde9b5c5cfd7665cdafe049059,4ab7706eb77350ca,Groundedness,pass,Every claim in the answer is supported by the retrieved policy text.
+2026-11-14T13:44:20Z,1d0bc9bde9b5c5cfd7665cdafe049059,4ab7706eb77350ca,Answered the question,pass,The answer addresses the customer's question directly.
+2026-11-14T13:44:20Z,1d0bc9bde9b5c5cfd7665cdafe049059,4ab7706eb77350ca,Topic,shipping,The customer asks about shipping.
+2026-11-14T13:46:20Z,7b85179ad5b077e06a5d932b45ff2c83,9970cf60ebff8d15,Groundedness,pass,Every claim in the answer is supported by the retrieved policy text.
+2026-11-14T13:46:20Z,7b85179ad5b077e06a5d932b45ff2c83,9970cf60ebff8d15,Answered the question,pass,The answer addresses the customer's question directly.
+2026-11-14T13:46:20Z,7b85179ad5b077e06a5d932b45ff2c83,9970cf60ebff8d15,Topic,account,The customer asks about account.
+2026-11-14T13:48:20Z,11df12d7dd30de8922f235f2e11b868d,44656d6b81fb18b3,Groundedness,pass,Every claim in the answer is supported by the retrieved policy text.
+2026-11-14T13:48:20Z,11df12d7dd30de8922f235f2e11b868d,44656d6b81fb18b3,Answered the question,pass,The answer addresses the customer's question directly.
+2026-11-14T13:48:20Z,11df12d7dd30de8922f235f2e11b868d,44656d6b81fb18b3,Topic,account,The customer asks about account.
+2026-11-14T13:50:20Z,d664d2644c6e27ffb9de7a3a486822b9,7bfdcc1289e06ab3,Groundedness,pass,Every claim in the answer is supported by the retrieved policy text.
+2026-11-14T13:50:20Z,d664d2644c6e27ffb9de7a3a486822b9,7bfdcc1289e06ab3,Answered the question,pass,The answer addresses the customer's question directly.
+2026-11-14T13:50:20Z,d664d2644c6e27ffb9de7a3a486822b9,7bfdcc1289e06ab3,Topic,account,The customer asks about account.
+2026-11-14T13:52:20Z,6090d6978b1e3b9dc34b9fbb8d4a75b8,620a60ac9261549d,Groundedness,pass,Every claim in the answer is supported by the retrieved policy text.
+2026-11-14T13:52:20Z,6090d6978b1e3b9dc34b9fbb8d4a75b8,620a60ac9261549d,Answered the question,pass,The answer addresses the customer's question directly.
+2026-11-14T13:52:20Z,6090d6978b1e3b9dc34b9fbb8d4a75b8,620a60ac9261549d,Topic,account,The customer asks about account.

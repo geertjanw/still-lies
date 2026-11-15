@@ -1,0 +1,31 @@
+# Run the agent from the repository root: the import below reads .env from there,
+# so OPENAI_API_KEY, AGENT_MODEL and the DASH0_* settings come from the same file as the CLI's.
+spring:
+  application:
+    name: support-agent            # becomes service.name on every span
+  config:
+    import: optional:file:.env[.properties]
+  ai:
+    openai:
+      api-key: ${OPENAI_API_KEY:}
+      chat:
+        model: ${AGENT_MODEL:gpt-4o-mini}
+    tools:
+      observations:
+        include-content: true      # tool arguments and result on the execute_tool span
+
+server:
+  port: ${PORT:8080}
+
+# good or broken; override with --agent.variant=broken
+agent:
+  variant: good
+
+management:
+  tracing:
+    sampling:
+      probability: 1.0             # the default is 0.1: keep every trace for the demo
+  opentelemetry:
+    resource-attributes:
+      service.version: ${SERVICE_VERSION:dev}
+      deployment.environment.name: ${DEPLOYMENT_ENVIRONMENT:demo}

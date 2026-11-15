@@ -1,0 +1,59 @@
+# The deploy gate from the talk: score the agent against the golden dataset on every pull request,
+# and every night (to catch a model provider silently changing a model).
+#
+# Repository settings needed (Settings > Secrets and variables > Actions):
+#   secret   OPENAI_API_KEY    the agent's model and the judge model
+name: AI evals
+
+on:
+  pull_request:
+  push:
+    branches: [main]
+  schedule:
+    - cron: "17 3 * * *"
+  workflow_dispatch:
+
+jobs:
+  gate:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    env:
+      OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
+      AGENT_URL: http://localhost:8080/answer
+      SERVICE_VERSION: ${{ github.sha }}
+      DEPLOYMENT_ENVIRONMENT: ci
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: "21"
+          cache: maven
+
+      # harness-evals is a Python tool; uv runs it without a virtualenv in the repo.
+      - uses: astral-sh/setup-uv@v6
+
+      - name: Build
+        run: mvn -B -q package -DskipTests
+
+      - name: Start the agent
+        run: |
+          nohup java -jar agent/target/support-agent.jar --agent.variant=good > agent.log 2>&1 &
+          for i in $(seq 1 60); do
+            curl -sf http://localhost:8080/health && exit 0
+            sleep 1
+          done
+          echo "agent did not start"; cat agent.log; exit 1
+
+      - name: Run the eval gate
+        run: java -jar cli/target/still-lies.jar gate
+
+      - name: Upload eval results
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: eval-results
+          path: |
+            results/
+            agent.log

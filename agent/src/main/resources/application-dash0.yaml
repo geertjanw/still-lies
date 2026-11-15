@@ -1,0 +1,11 @@
+# Active with --spring.profiles.active=dash0: export traces to Dash0 over OTLP/HTTP.
+# Without this profile no exporter is created, so CI and rehearsal runs send nothing.
+management:
+  opentelemetry:
+    tracing:
+      export:
+        otlp:
+          endpoint: ${DASH0_OTLP_URL}/v1/traces
+          headers:
+            Authorization: Bearer ${DASH0_AUTH_TOKEN}
+            Dash0-Dataset: ${DASH0_DATASET:default}

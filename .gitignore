@@ -1,0 +1,8 @@
+.env
+target/
+data/
+results/
+evals/rehearsal.eval.yaml
+.idea/
+.vscode/
+*.iml
