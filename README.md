@@ -69,6 +69,9 @@ Do this before you send any traffic: Dash0 Evals don't backfill, so spans that a
 evals-gate dash0-evals
 ```
 
+![Dash0 Evals folder](docs/screenshots/dash0-evals-folder.png)
+*The three evals in the evals-gate folder, ready to judge incoming traffic*
+
 ### 2. Reproduce the incident
 
 In terminal 1, start the agent with the bug, sending traces to Dash0:
@@ -84,6 +87,12 @@ evals-gate traffic
 ```
 
 After a few minutes, open a `chat` span from `support-agent` in Dash0 and look at its **Evals** tab. Groundedness fails on the refund questions, while every other check is green.
+
+![Chat span with Evals verdicts](docs/screenshots/dash0-chat-span-verdicts.png)
+*Groundedness fails while Topic and Answered the question pass*
+
+![Eval results by topic](docs/screenshots/dash0-eval-results-by-topic.png)
+*Groundedness failures cluster on billing, passes on shipping and account*
 
 ### 3. Export and slice with DuckDB
 
