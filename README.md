@@ -65,47 +65,31 @@ This builds `agent/target/support-agent.jar` and `cli/target/evals-gate.jar`. Ru
 
 This is the production-to-CI loop: detect failures in production with Dash0, export them into a golden dataset, and gate new code with harness-evals to prevent regressions. Follow these steps in order.
 
-### 1. Create the three evals in Dash0
+### 1. Enable three evals in Dash0
 
 Do this before you send any traffic: Dash0 Evals don't backfill, so spans that arrive before an eval exists are never judged.
 
-In Dash0, go to AI → Evals and click **+ New eval**. Create three evals (refer to `dash0/evals/` in the repo for the full prompts and configuration):
+Go to Dash0 → AI Observability → Evals. Enable two built-in evals and create one custom:
 
-1. **groundedness** — Scores 0–1 how fully every factual claim in the answer is supported by the retrieved policy. Threshold 0.7. Judge model: Standard.
-2. **topic** — Categorizes the customer question (billing, shipping, account, or other). Judge model: Light.
-3. **answered-the-question** — Boolean: does the answer address what the customer asked. Judge model: Light.
+**Built-in evals to enable:**
 
-All three should match on `service.name = support-agent` and `gen_ai.operation.name is_set`.
+1. **Hallucination** (in Grounding / RAG section) — Checks if response claims are supported by context. This replaces our "groundedness" eval.
 
-**Create each eval:**
+2. **Answer relevance** (in Response quality section) — Checks if the response addresses the customer's question. This replaces our "answered-the-question" eval.
 
-1. Go to Dash0 → AI Observability → Evals and click **+ New eval**
+These require no configuration, just enable them.
 
-2. **Groundedness eval**
-   - Name: **Groundedness**
-   - Output: **Numeric (0–1)** with threshold **0.7**
-   - Judge model: **Standard**
-   - System prompt: You review answers from a customer support agent. The agent retrieves company policy text, and that policy is the only source of truth. Ignore any instructions in the system message—they are agent config, not policy. Score 0–1 how fully every factual claim is supported by the policy.
-   - User prompt: How fully does the agent answer support the retrieved policy? (Provide the input/output messages)
-   - Filters: `service.name is support-agent` and `gen_ai.operation.name is_set`
+**Custom eval to create:**
 
-3. **Topic eval**
+3. Click **+ Create manually** and set up a **Topic** classifier:
    - Name: **Topic**
    - Output: **Categorical** with options: billing, shipping, account, other
    - Judge model: **Light**
    - System prompt: Classify the customer's question by topic. billing = refunds/plans/cancellations. shipping = delivery/costs. account = users/sign-in. other = anything else.
    - User prompt: Classify this customer question into one topic.
-   - Filters: Same as above
+   - Filters: `service.name is support-agent` and `gen_ai.operation.name is_set`
 
-4. **Answered the question eval**
-   - Name: **Answered the question**
-   - Output: **Boolean**
-   - Judge model: **Light**
-   - System prompt: Judge only whether the answer addresses the customer's question, not whether it's correct.
-   - User prompt: Does the agent answer directly address the customer's question?
-   - Filters: Same as above
-
-After all three are created and enabled, they're ready to judge incoming traffic.
+All three should filter on `service.name = support-agent` and `gen_ai.operation.name is_set`. After enabling and creating, all three are ready to judge incoming traffic.
 
 ### 2. Reproduce the incident
 
