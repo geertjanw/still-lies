@@ -166,19 +166,23 @@ java -jar cli/target/evals-gate.jar traffic
 
 After 2–3 minutes, the evals will have judged all the requests. To see the results:
 
-1. Go to Dash0 and navigate to **Traces** (left sidebar under Monitoring)
-2. Filter by `service.name is support-agent` to find traces from your agent
-3. Open any trace and look for the second `chat` span (the one with the agent's final answer)
-4. Click the **Evals** tab in the span details (right sidebar)
-5. You'll see three eval verdicts:
+1. Go to Dash0 and navigate to **Traces** (left sidebar under Monitoring → Telemetry → Tracing)
+2. You should see traces arriving. If you see "No traces received yet", your agent isn't connected:
+   - Check terminal 1: is the agent still running? It should show `Started ...Application in X.XXX seconds`
+   - Check your `.env` file: does `DASH0_OTLP_URL` point to a valid Dash0 instance?
+   - Restart the agent: Ctrl+C and run `java -jar agent/target/support-agent.jar --spring.profiles.active=dash0 --agent.variant=broken` again
+3. Once traces arrive, look for the ones from `support-agent` service
+4. Open any trace and find the second `chat` span (the one with the agent's final answer)
+5. Click the **Evals** tab in the span details (right sidebar)
+6. You'll see three eval verdicts:
    - **Hallucination:** Fails (❌) on refund questions because the agent said "30 days" but the policy says "14 days"
    - **Answer relevance:** Passes (✅) — the agent did answer the question
    - **Topic:** Passes (✅) — the question was correctly classified
 
-If you don't see any evals yet:
-- Check that traffic is still sending (terminal 2 should still be running `evals-gate traffic`)
-- Wait another minute — evals take time to score after traces arrive
-- Make sure the filters on the three evals are set correctly (both filters matching `service.name is support-agent` and `gen_ai.operation.name is_set`)
+If you still don't see evals:
+- **No traces at all:** Agent isn't sending traces. Check DASH0_OTLP_URL and agent logs in terminal 1
+- **Traces but no evals:** Wait another minute. Evals are scored asynchronously after traces arrive
+- **Traces but evals show "No matching spans":** The eval filters may be wrong. Go back to step 1.3 and verify the Span filters match `service.name is support-agent` and `gen_ai.operation.name is_set`
 
 **To capture (Evals on a single span)**:
 1. In Dash0, navigate to Traces
