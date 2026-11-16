@@ -9,3 +9,8 @@ management:
           headers:
             Authorization: Bearer ${DASH0_AUTH_TOKEN}
             Dash0-Dataset: ${DASH0_DATASET:default}
+  otel:
+    exporter:
+      otlp:
+        traces:
+          protocol: http/protobuf

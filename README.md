@@ -61,6 +61,27 @@ This builds `agent/target/support-agent.jar` and `cli/target/evals-gate.jar`. Ru
 
 `evals-gate check` verifies your setup: it looks for Java 21+, Maven, `uv`, the `dash0` CLI, both jars, and `.env` with all required keys filled in. If all pass, it prints "all good" with your Java version. If anything is missing, it lists what to install or configure. This is your confirmation that you're ready to run the demo.
 
+### Java SSL certificate setup
+
+On macOS, Java's default truststore may not include your Dash0 endpoint's certificate chain. Set up a local truststore once (one-time only):
+
+```bash
+# Download the certificate chain from your Dash0 OTLP endpoint
+echo | openssl s_client -servername ingress.europe-west4.gcp.dash0.com \
+  -connect ingress.europe-west4.gcp.dash0.com:443 -showcerts 2>/dev/null | \
+  sed -ne '/-BEGIN CERTIFICATE-/,/-END CERTIFICATE-/p' > /tmp/dash0-chain.pem
+
+# Find your Java home and copy its default truststore
+JAVA_HOME=$(java -XshowSettings:properties -version 2>&1 | grep 'java.home' | awk '{print $NF}')
+cp "$JAVA_HOME/lib/security/cacerts" /tmp/custom-cacerts
+
+# Import the certificate (default truststore password is 'changeit')
+keytool -import -alias dash0 -file /tmp/dash0-chain.pem \
+  -keystore /tmp/custom-cacerts -storepass changeit -noprompt
+```
+
+After this setup, all agent commands automatically use this truststore.
+
 ## Run the demo
 
 This is the production-to-CI loop: detect failures in production with Dash0, export them into a golden dataset, and gate new code with harness-evals to prevent regressions. Follow these steps in order.
@@ -152,11 +173,31 @@ Click **Save**. All three evals are now set up and waiting for traffic.
 
 ### 2. Send traffic so the evals judge it
 
-In terminal 1, start the agent with the bug, sending traces to Dash0:
+In terminal 1, start the agent with the bug, sending traces to Dash0. The truststore setup enables the agent to securely export traces:
 
 ```bash
-java -jar agent/target/support-agent.jar --spring.profiles.active=dash0 --agent.variant=broken
+DASH0_OTLP_URL=https://ingress.europe-west4.gcp.dash0.com \
+DASH0_AUTH_TOKEN=auth_Aj3o8Fi3WGHg0E6tDYATbVorm2y6MPdm \
+DASH0_DATASET=default \
+java -Djavax.net.ssl.trustStore=/tmp/custom-cacerts \
+  -Djavax.net.ssl.trustStorePassword=changeit \
+  -jar agent/target/support-agent.jar \
+  --spring.profiles.active=dash0 \
+  --agent.variant=broken
 ```
+
+Or set an alias in your shell for convenience:
+
+```bash
+alias start-agent='DASH0_OTLP_URL=https://ingress.europe-west4.gcp.dash0.com \
+DASH0_AUTH_TOKEN=auth_Aj3o8Fi3WGHg0E6tDYATbVorm2y6MPdm \
+DASH0_DATASET=default \
+java -Djavax.net.ssl.trustStore=/tmp/custom-cacerts \
+-Djavax.net.ssl.trustStorePassword=changeit \
+-jar agent/target/support-agent.jar --spring.profiles.active=dash0'
+```
+
+Then start the broken agent with: `start-agent --agent.variant=broken`
 
 In terminal 2, send 51 requests:
 
@@ -167,10 +208,11 @@ java -jar cli/target/evals-gate.jar traffic
 After 2–3 minutes, the evals will have judged all the requests. To see the results:
 
 1. Go to Dash0 and navigate to **Traces** (left sidebar under Monitoring → Telemetry → Tracing)
-2. You should see traces arriving. If you see "No traces received yet", your agent isn't connected:
-   - Check terminal 1: is the agent still running? It should show `Started ...Application in X.XXX seconds`
-   - Check your `.env` file: does `DASH0_OTLP_URL` point to a valid Dash0 instance?
-   - Restart the agent: Ctrl+C and run `java -jar agent/target/support-agent.jar --spring.profiles.active=dash0 --agent.variant=broken` again
+2. You should see traces arriving. If you see "No traces received yet", check:
+   - Terminal 1: is the agent still running? It should show `Started ...Application in X.XXX seconds`
+   - Your `.env` file: does `DASH0_OTLP_URL` match your Dash0 OTLP endpoint?
+   - The truststore was created successfully (see [Java SSL certificate setup](#java-ssl-certificate-setup))
+   - Restart the agent if needed
 3. Once traces arrive, look for the ones from `support-agent` service
 4. Open any trace and find the second `chat` span (the one with the agent's final answer)
 5. Click the **Evals** tab in the span details (right sidebar)
@@ -410,6 +452,8 @@ Fifteen `200`s means the limit is gone; `429` after about ten means you're still
 
 | Symptom | Cause and fix |
 |---|---|
+| Agent logs: `SSLHandshakeException: PKIX path building failed` | Java's truststore is missing the Dash0 certificate chain. See [Java SSL certificate setup](#java-ssl-certificate-setup). This is common on macOS where Java's default truststore doesn't include all corporate certificate chains. |
+| No traces arriving in Dash0 after sending traffic | Agent not running the `--spring.profiles.active=dash0` profile (required to enable OTLP export), or environment variables not set. Verify: agent logs show `The following 1 profile is active: "dash0"`, and the command sets `DASH0_OTLP_URL`, `DASH0_AUTH_TOKEN`, `DASH0_DATASET`. |
 | Chat spans in Dash0 without `gen_ai.input.messages` | Spring AI doesn't put the prompt and answer text on its spans by itself. `GenAiMessagesObservationFilter` must be registered as a bean, and the agent started with `--spring.profiles.active=dash0`. |
 | Only some requests show up in Dash0 | Spring Boot samples 10 percent by default; `management.tracing.sampling.probability` is 1.0 in `application.yaml`. |
 | Spans arrive, but no verdicts | Evals created after the traffic (no backfill), or a filter doesn't match `service.name = support-agent`. |
