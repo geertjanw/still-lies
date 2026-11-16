@@ -207,24 +207,53 @@ java -jar cli/target/evals-gate.jar traffic
 
 After 2–3 minutes, the evals will have judged all the requests. To see the results:
 
-1. Go to Dash0 and navigate to **Traces** (left sidebar under Monitoring → Telemetry → Tracing)
-2. You should see traces arriving. If you see "No traces received yet", check:
-   - Terminal 1: is the agent still running? It should show `Started ...Application in X.XXX seconds`
-   - Your `.env` file: does `DASH0_OTLP_URL` match your Dash0 OTLP endpoint?
-   - The truststore was created successfully (see [Java SSL certificate setup](#java-ssl-certificate-setup))
-   - Restart the agent if needed
-3. Once traces arrive, look for the ones from `support-agent` service
-4. Open any trace and find the second `chat` span (the one with the agent's final answer)
-5. Click the **Evals** tab in the span details (right sidebar)
-6. You'll see three eval verdicts:
-   - **Hallucination:** Fails (❌) on refund questions because the agent said "30 days" but the policy says "14 days"
-   - **Answer relevance:** Passes (✅) — the agent did answer the question
-   - **Topic:** Passes (✅) — the question was correctly classified
+#### Step-by-step: View traces and evals in Dash0
 
-If you still don't see evals:
-- **No traces at all:** Agent isn't sending traces. Check DASH0_OTLP_URL and agent logs in terminal 1
-- **Traces but no evals:** Wait another minute. Evals are scored asynchronously after traces arrive
-- **Traces but evals show "No matching spans":** The eval filters may be wrong. Go back to step 1.3 and verify the Span filters match `service.name is support-agent` and `gen_ai.operation.name is_set`
+**Navigate to Traces:**
+1. In Dash0, click the **hamburger menu** (☰) on the left sidebar
+2. Find **Monitoring** section
+3. Click **Telemetry** → **Tracing**
+4. You'll see a list of traces with timestamps and service names
+
+**Filter by support-agent service (optional but helpful):**
+1. At the top of the traces list, you'll see a search/filter box
+2. Click **Add filter** or search for `service.name`
+3. Select or type `support-agent` to show only traces from your agent
+
+**Open a trace and find the evals:**
+1. In the traces list, click on any trace (click anywhere in the row — a trace that has a question in the message like "I bought...")
+2. The trace will expand in a **right sidebar** showing the span waterfall (tree of operations)
+3. Look for **two `chat` spans** in the waterfall (they should say `chat` with a span type icon):
+   - **First `chat` span** (higher up) — this is where the agent reads the question
+   - **Second `chat` span** (lower down) — this is where the agent produces the answer (the one you want)
+4. **Click on the second `chat` span** to select it (it should highlight/be selected)
+5. When the span is selected, a **details panel** opens on the far right showing:
+   - Span name, duration, attributes
+   - **Look for tabs at the top of this details panel** — you should see: Attributes, Events, **Evals**, etc.
+6. **Click the `Evals` tab** — this shows the eval verdicts for this span
+
+**What you should see in the Evals tab:**
+- Three eval results displayed:
+  - **Hallucination:** ❌ **Fail** (red/orange) — score around 0.3–0.6 with explanation "agent said 30 days but policy says 14 days"
+  - **Answer relevance:** ✅ **Pass** (green) — score 1.0
+  - **Topic:** ✅ **Pass** (green) — score 1.0
+
+**If you're having trouble finding things:**
+- **Can't see the Evals tab?** Make sure you clicked on the *second* `chat` span (not the first one, not a different span type)
+- **Span details panel not showing?** Click directly on the span name (`chat`) in the waterfall
+- **No chat spans visible?** Wait a few more seconds and refresh the page (F5) — evals are asynchronous
+
+**If you still don't see traces or evals:**
+- **No traces at all:** Agent isn't sending traces. Check:
+  - Terminal 1: agent logs should show `Starting SupportAgentApplication`
+  - `DASH0_OTLP_URL` in your `.env` matches your Dash0 region
+  - SSL truststore was set up correctly (see [Java SSL certificate setup](#java-ssl-certificate-setup))
+  - Restart the agent with the correct startup command
+- **Traces but no Evals tab:** 
+  - Wait another 1–2 minutes. Evals are scored asynchronously after spans arrive
+  - Refresh the page (F5)
+- **Evals tab shows "No matching spans":** 
+  - The eval filters may be wrong. Go back to step 1.3 and verify the Span filters match `service.name is support-agent` and `gen_ai.operation.name is_set`
 
 **To capture (Evals on a single span)**:
 1. In Dash0, navigate to Traces
