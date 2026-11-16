@@ -164,10 +164,21 @@ In terminal 2, send 51 requests:
 java -jar cli/target/evals-gate.jar traffic
 ```
 
-After a few minutes, the evals will have judged all the requests. Open a `chat` span from `support-agent` in Dash0 and look at its **Evals** tab. You'll see three eval verdicts:
-- **Hallucination:** Fails (❌) on refund questions because the agent said "30 days" but the policy says "14 days"
-- **Answer relevance:** Passes (✅) — the agent did answer the question
-- **Topic:** Passes (✅) — the question was correctly classified
+After 2–3 minutes, the evals will have judged all the requests. To see the results:
+
+1. Go to Dash0 and navigate to **Traces** (left sidebar under Monitoring)
+2. Filter by `service.name is support-agent` to find traces from your agent
+3. Open any trace and look for the second `chat` span (the one with the agent's final answer)
+4. Click the **Evals** tab in the span details (right sidebar)
+5. You'll see three eval verdicts:
+   - **Hallucination:** Fails (❌) on refund questions because the agent said "30 days" but the policy says "14 days"
+   - **Answer relevance:** Passes (✅) — the agent did answer the question
+   - **Topic:** Passes (✅) — the question was correctly classified
+
+If you don't see any evals yet:
+- Check that traffic is still sending (terminal 2 should still be running `evals-gate traffic`)
+- Wait another minute — evals take time to score after traces arrive
+- Make sure the filters on the three evals are set correctly (both filters matching `service.name is support-agent` and `gen_ai.operation.name is_set`)
 
 **To capture (Evals on a single span)**:
 1. In Dash0, navigate to Traces
