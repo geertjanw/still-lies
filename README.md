@@ -207,72 +207,59 @@ java -jar cli/target/evals-gate.jar traffic
 
 After 2–3 minutes, the evals will have judged all the requests. To see the results:
 
-#### Step-by-step: View traces and evals in Dash0
+#### Step-by-step: View eval results in Dash0
 
-**Navigate to Traces:**
-1. In Dash0, click the **hamburger menu** (☰) on the left sidebar
-2. Find **Monitoring** section
-3. Click **Telemetry** → **Tracing**
-4. You'll see a list of traces with timestamps and service names
+**The primary way to see all eval verdicts:**
 
-**Filter by support-agent service (optional but helpful):**
-1. At the top of the traces list, you'll see a search/filter box
-2. Click **Add filter** or search for `service.name`
-3. Select or type `support-agent` to show only traces from your agent
+1. In Dash0, click **AI** in the left sidebar
+2. Click **GenAI evaluation results**
+3. You'll see a dashboard showing all eval verdicts across all spans
 
-**Open a trace and find the evals:**
-1. In the traces list, click on any trace (click anywhere in the row — a trace that has a question in the message like "I bought...")
-2. The trace will expand in a **right sidebar** showing the span waterfall (tree of operations)
-3. Look for **two `chat` spans** in the waterfall (they should say `chat` with a span type icon):
-   - **First `chat` span** (higher up) — this is where the agent reads the question
-   - **Second `chat` span** (lower down) — this is where the agent produces the answer (the one you want)
-4. **Click on the second `chat` span** to select it (it should highlight/be selected)
-5. When the span is selected, a **details panel** opens on the far right showing:
-   - Span name, duration, attributes
-   - **Look for tabs at the top of this details panel** — you should see: Attributes, Events, **Evals**, etc.
-6. **Click the `Evals` tab** — this shows the eval verdicts for this span
+**What you should see:**
 
-**What you should see in the Evals tab:**
-- Three eval results displayed:
-  - **Hallucination:** ❌ **Fail** (red/orange) — score around 0.3–0.6 with explanation "agent said 30 days but policy says 14 days"
-  - **Answer relevance:** ✅ **Pass** (green) — score 1.0
-  - **Topic:** ✅ **Pass** (green) — score 1.0
+The page shows three sections — one for each eval:
 
-**If you're having trouble finding things:**
-- **Can't see the Evals tab?** Make sure you clicked on the *second* `chat` span (not the first one, not a different span type)
-- **Span details panel not showing?** Click directly on the span name (`chat`) in the waterfall
-- **No chat spans visible?** Wait a few more seconds and refresh the page (F5) — evals are asynchronous
+- **Answer relevance**: ✅ Mostly **passing** (green) — agent answered the questions
+- **Hallucination**: ⚠️ **Mixed** — mostly passing, but some failures on refund questions
+  - Look for explanations mentioning "30 days" vs "14 days"
+  - This is the bug you're catching!
+- **Topic**: ✅ Mostly **passing** (green) — questions correctly classified
 
-**If you still don't see traces or evals:**
+**Understanding the Hallucination results:**
+
+The hallucination eval shows:
+- ~95% **grounded** (green) ✅ — agent's answer matches the policy
+- ~4% **partially_grounded** (yellow) ⚠️ — some claims supported, some not
+- ~1% **hallucinated** (red) ❌ — agent made claims NOT in the policy
+
+This is the demo's point: **the agent fails silently on refund policy** (a critical business function), but conventional checks all pass.
+
+**If you want to drill into individual spans:**
+
+1. Still in **GenAI evaluation results**
+2. Click on a specific result in the table
+3. You can see which span it came from and the judge's explanation
+
+Or go to **Monitoring → Telemetry → Tracing** to view individual traces and their span details.
+
+**If you're having trouble:**
+- **GenAI evaluation results page is empty:** Wait 2–3 minutes for evals to score, then refresh (F5)
+- **Results show only "grounded" verdicts:** The evals might not have failed yet. Send more traffic: `java -jar cli/target/evals-gate.jar traffic --rounds 1`
+- **Can't find GenAI evaluation results:** Make sure you're in the right place: **AI** (left sidebar) → **GenAI evaluation results**
+
+**Example: Hallucination eval results showing the caught bug:**
+
+![Hallucination eval results](docs/screenshots/dash0-hallucination-eval-results.png)
+*The Hallucination eval catches the lie: 95% grounded, but failures on refund questions where agent said 30 days instead of 14 days.*
+
+**If you still don't see eval results:**
+- **GenAI evaluation results page is empty:** Wait 2–3 minutes for evals to score, then refresh (F5)
 - **No traces at all:** Agent isn't sending traces. Check:
   - Terminal 1: agent logs should show `Starting SupportAgentApplication`
   - `DASH0_OTLP_URL` in your `.env` matches your Dash0 region
   - SSL truststore was set up correctly (see [Java SSL certificate setup](#java-ssl-certificate-setup))
   - Restart the agent with the correct startup command
-- **Traces but no Evals tab:** 
-  - Wait another 1–2 minutes. Evals are scored asynchronously after spans arrive
-  - Refresh the page (F5)
-- **Evals tab shows "No matching spans":** 
-  - The eval filters may be wrong. Go back to step 1.3 and verify the Span filters match `service.name is support-agent` and `gen_ai.operation.name is_set`
-
-**To capture (Evals on a single span)**:
-1. In Dash0, navigate to Traces
-2. Find a trace from `support-agent` (filter by service name if needed)
-3. Open the trace and select the second `chat` span (the one with the final answer)
-4. In the span details sidebar, click the **Evals** tab
-5. Take a screenshot showing the three verdicts, with Groundedness failing
-
-![Chat span with Evals verdicts](docs/screenshots/dash0-chat-span-verdicts.png)
-*Groundedness fails while Topic and Answered the question pass*
-
-**To capture (Eval results across all spans)**:
-1. In Dash0, navigate to AI → GenAI evaluation results
-2. Look for a view that groups verdicts by eval name and label
-3. Verify that Groundedness failures are clustered on billing questions, while Topic and Answered the question are mostly passing across all topics
-4. Take a screenshot showing this distribution
-
-![Eval results by topic](docs/screenshots/dash0-eval-results-by-topic.png)
-*Groundedness failures cluster on billing, passes on shipping and account*
+- **GenAI evaluation results only shows "grounded":** The agent is working correctly on those questions. Send more traffic to get more eval results: `java -jar cli/target/evals-gate.jar traffic --rounds 1`
 
 ### 3. Export and slice with DuckDB
 
